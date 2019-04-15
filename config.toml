@@ -5,5 +5,5 @@ theme = "hyde"
   categories = ["Blog Post","About"]
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Michael's New Hugo Site"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
