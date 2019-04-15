@@ -1,0 +1,37 @@
+---
+title: Weather Analysis
+author: Michael Elten
+date: '2019-04-14'
+slug: weather-analysis
+categories:
+  - R
+tags:
+  - Data Visualization
+  - Ridgeplot
+  - GGanimate
+Categories:
+  - Development
+  - GoLang
+Description: ''
+Tags:
+  - Development
+  - golang
+menu: main
+---
+
+
+
+<div id="the-setting" class="section level1">
+<h1>The setting</h1>
+<p>I wanted to look at the weather this past winter and compare it to historical data. Luckily for me, there is an excellent publically available data source for historical weather data, provided by <a href="http://climate.weather.gc.ca/historical_data/search_historic_data_e.html">Environment Canada</a></p>
+</div>
+<div id="snowfall" class="section level1">
+<h1>Snowfall</h1>
+<p>Looking at previous snowfalls now. First you install all packages</p>
+<pre class="r"><code>library(&quot;tidyverse&quot;)
+library(&quot;ggridges&quot;)
+library(&quot;viridis&quot;)
+library(&quot;lubridate&quot;)
+library(&quot;gganimate&quot;)
+library(&quot;gifski&quot;)</code></pre>
+</div>

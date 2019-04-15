@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <link href="//gmpg.org/xfn/11" rel="profile">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>My New Hugo Site</title>
+  <title></title>
 
   
   <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
@@ -23,25 +23,26 @@
   <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="My New Hugo Site" />
+  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="" />
 
   
 </head>
 
-  <body class=" ">
+  <body class="theme-base-0c ">
   <aside class="sidebar">
   <div class="container sidebar-sticky">
     <div class="sidebar-about">
-      <a href="/"><h1>My New Hugo Site</h1></a>
+      <a href="/"><h1></h1></a>
       <p class="lead">
-      An elegant open source and mobile first theme for <a href="http://hugo.spf13.com">hugo</a> made by <a href="http://twitter.com/mdo">@mdo</a>. Originally made for Jekyll.
+       My New Blog 
       </p>
     </div>
 
     <nav>
       <ul class="sidebar-nav">
         <li><a href="/">Home</a> </li>
-        
+        <li><a href="Blog%20Post"> Blog Post </a></li><li><a href="About"> About </a></li>
+        <li><a href="/post/weather-analysis/"> Weather Analysis </a></li>
       </ul>
     </nav>
 
@@ -53,10 +54,19 @@
     <div class="posts">
 <article class="post">
   <h1 class="post-title">
-    <a href="/post/2015-07-23-r-rmarkdown/">Hello R Markdown</a>
+    <a href="/post/weather-analysis/">Weather Analysis</a>
+  </h1>
+  <time datetime="2019-04-14T00:00:00Z" class="post-date">Sun, Apr 14, 2019</time>
+  The settingI wanted to look at the weather this past winter and compare it to historical data. Luckily for me, there is an excellent publically available data source for historical weather data, provided by Environment Canada
+SnowfallLooking at previous snowfalls now. First you install all packages
+library(&quot;tidyverse&quot;)library(&quot;ggridges&quot;)library(&quot;viridis&quot;)library(&quot;lubridate&quot;)library(&quot;gganimate&quot;)library(&quot;gifski&quot;)
+  
+</article><article class="post">
+  <h1 class="post-title">
+    <a href="/post/2015-07-23-r-rmarkdown/">First Post</a>
   </h1>
   <time datetime="2015-07-23T21:13:14-0500" class="post-date">Thu, Jul 23, 2015</time>
-  R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+  Weather AnalysisThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
 You can embed an R code chunk like this:
 summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.
   

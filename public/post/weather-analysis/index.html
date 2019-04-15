@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Tags &middot; </title>
+  <title>Weather Analysis &middot; </title>
 
   
   <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
@@ -23,7 +23,7 @@
   <link rel="shortcut icon" href="/favicon.png">
 
   
-  <link href="/tags/index.xml" rel="alternate" type="application/rss+xml" title="" />
+  <link href="" rel="alternate" type="application/rss+xml" title="" />
 
   
 </head>
@@ -51,19 +51,30 @@
 </aside>
 
     <main class="content container">
-    <ul class="posts">
-<li>
-    <span><a href="/tags/development/">Development</a> <time class="pull-right post-list" datetime="2019-04-14T00:00:00Z">Sun, Apr 14, 2019</time></span>
-  </li><li>
-    <span><a href="/tags/golang/">Golang</a> <time class="pull-right post-list" datetime="2019-04-14T00:00:00Z">Sun, Apr 14, 2019</time></span>
-  </li><li>
-    <span><a href="/tags/plot/">Plot</a> <time class="pull-right post-list" datetime="2015-07-23T21:13:14-0500">Thu, Jul 23, 2015</time></span>
-  </li><li>
-    <span><a href="/tags/r-markdown/">R Markdown</a> <time class="pull-right post-list" datetime="2015-07-23T21:13:14-0500">Thu, Jul 23, 2015</time></span>
-  </li><li>
-    <span><a href="/tags/regression/">Regression</a> <time class="pull-right post-list" datetime="2015-07-23T21:13:14-0500">Thu, Jul 23, 2015</time></span>
-  </li>
-</ul>
+    <div class="post">
+  <h1>Weather Analysis</h1>
+  <time datetime=2019-04-14T00:00:00Z class="post-date">Sun, Apr 14, 2019</time>
+  
+
+
+<div id="the-setting" class="section level1">
+<h1>The setting</h1>
+<p>I wanted to look at the weather this past winter and compare it to historical data. Luckily for me, there is an excellent publically available data source for historical weather data, provided by <a href="http://climate.weather.gc.ca/historical_data/search_historic_data_e.html">Environment Canada</a></p>
+</div>
+<div id="snowfall" class="section level1">
+<h1>Snowfall</h1>
+<p>Looking at previous snowfalls now. First you install all packages</p>
+<pre class="r"><code>library(&quot;tidyverse&quot;)
+library(&quot;ggridges&quot;)
+library(&quot;viridis&quot;)
+library(&quot;lubridate&quot;)
+library(&quot;gganimate&quot;)
+library(&quot;gifski&quot;)</code></pre>
+</div>
+
+</div>
+
+
     </main>
 
     
