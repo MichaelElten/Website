@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on </title>
+    <link>/categories/blog/</link>
+    <description>Recent content in Blog on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 14 Apr 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Weather Analysis</title>
+      <link>/post/weather-analysis/</link>
+      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/post/weather-analysis/</guid>
+      <description>The settingI wanted to look at the weather this past winter and compare it to historical data. Luckily for me, there is an excellent publically available data source for historical weather data, provided by Environment Canada
+SnowfallLooking at previous snowfalls now. First you install all packages
+library(&amp;quot;tidyverse&amp;quot;)library(&amp;quot;ggridges&amp;quot;)library(&amp;quot;viridis&amp;quot;)library(&amp;quot;lubridate&amp;quot;)library(&amp;quot;gganimate&amp;quot;)library(&amp;quot;gifski&amp;quot;)</description>
+    </item>
+    
+  </channel>
+</rss>
