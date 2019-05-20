@@ -1,9 +1,29 @@
-theme = "hyde"
+theme = "hugo-geo-master"
+
 [params]
-  themeColor = "theme-base-0c"
-  description = "My New Blog"
-  categories = ["Blog Post","About"]
+categories = ["Blog Post","About"]
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "Michael's New Hugo Site"
+title = "A Data Epidemic"
+subtitle = "A blog by Michael Elten"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+[[params.socialbuttons]]
+	faicon = "twitter"
+	url = "https://twitter.com/MichaelElten"
+
+[[params.socialbuttons]]
+	faicon = "linkedin"
+	url = "https://linkedin.com"
+
+[[params.socialbuttons]]
+	faicon = "github"
+	url = "https://github.com/MichaelElten"
+  
+[[params.navlinks]]
+name= "About"
+url = "about/"
+  
+[[params.navlinks]]
+name= "Blog"
+url = "Post/" 
