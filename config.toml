@@ -1,12 +1,15 @@
 theme = "hugo-geo-master"
-
+ 
 [params]
 categories = ["Blog Post","About"]
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "A Data Epidemic"
+title = "Casual Inferences"
 subtitle = "A blog by Michael Elten"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
+
+#Social media buttons!
 
 [[params.socialbuttons]]
 	faicon = "twitter"
@@ -19,11 +22,21 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [[params.socialbuttons]]
 	faicon = "github"
 	url = "https://github.com/MichaelElten"
-  
+
+# Navigation links!
+    
 [[params.navlinks]]
 name= "About"
-url = "about/"
-  
+url = "about/"  
+
+[[params.navlinks]]
+name= "Presentations"
+url = "presentations/"
+
+[[params.navlinks]]
+name= "Publications"
+url = "publications/"  
+   
 [[params.navlinks]]
 name= "Blog"
-url = "Post/" 
+url = "post/" 
