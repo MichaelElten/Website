@@ -8,6 +8,6 @@ tags: []
 menu: main
 --- 
 
+This is my about page - where I will give an overview of the blog.
 
-
-<p>This is my about page - where I will give an overview of the blog</p>
+See my CV [here](/Vitae.pdf) 
