@@ -2,11 +2,11 @@
 title: Weather Analysis
 author: Michael Elten
 date: '2019-04-14'
-# slug: weather-analysis
+slug: weather-analysis
 
 Categories:
   - Blog Post 
-Description: ''
+Description: '' 
 Tags:
   - Data Visualization
   - Ridgeplot
@@ -32,4 +32,4 @@ library("gganimate")
 library("gifski")
 ```
 
-Here is a picture of Skyfall: ![](/post/skyfall.jpg)
+Here is a picture of Skyfall: ![](skyfall.jpg)

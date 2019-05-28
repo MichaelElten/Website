@@ -4,16 +4,23 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta name="description" content="">
-    <meta property="og:title" content="Data Visualization">
+    <meta property="og:title" content="Weather Analysis">
     
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-04-14">
     
     <meta property="og:description" content="">
-    <meta property="og:url" content="/tags/data-visualization/">
+    <meta property="og:url" content="/post/weather_analysis/weather-analysis/">
     <meta property="og:site_name" content="">
     
+    <meta property="og:tags" content="Data Visualization">
+    
+    <meta property="og:tags" content="Ridgeplot">
+    
+    <meta property="og:tags" content="GGanimate">
+    
     <meta name="generator" content="Hugo 0.54.0" />
-    <title>Data Visualization &middot; </title>
+    <title>Weather Analysis &middot; </title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -92,16 +99,39 @@
 			<div class="row">
 				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
 
-<article>
+<main>
 	<header>
-		<h1>Data Visualization</a></h1>
+		<h1>Weather Analysis</h1>
 	</header>
-<ul>
-	
-	<li><a href="/post/weather_analysis/weather-analysis/">Weather Analysis</a></li>
-	
-</ul>
-</article>
+
+	<article>
+		
+
+
+<div id="the-setting" class="section level2">
+<h2>The setting</h2>
+<p>I wanted to look at the weather this past winter and compare it to historical data. Luckily for me, there is an excellent publically available data source for historical weather data, provided by <a href="http://climate.weather.gc.ca/historical_data/search_historic_data_e.html">Environment Canada</a></p>
+</div>
+<div id="snowfall" class="section level2">
+<h2>Snowfall</h2>
+<p>Looking at previous snowfalls now. First you install all packages</p>
+<pre class="r"><code>library(&quot;tidyverse&quot;)
+library(&quot;ggridges&quot;)
+library(&quot;viridis&quot;)
+library(&quot;lubridate&quot;)
+library(&quot;gganimate&quot;)
+library(&quot;gifski&quot;)</code></pre>
+<p>Here is a picture of Skyfall: <img src="skyfall.jpg" /></p>
+</div>
+
+	</article>
+</main>
+
+<div id="bottom-nav" class="text-center center-block">
+	<a href=" /" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
+</div>
+
+
 
 						</div>
 					</div>

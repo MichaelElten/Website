@@ -3,22 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/presentations/</loc>
+    <loc>/about/presentations/</loc>
     <lastmod>2019-05-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/publications/</loc>
+    <loc>/about/publications/</loc>
     <lastmod>2019-05-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/about/</loc>
+    <loc>/about/about/</loc>
     <lastmod>2019-05-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/weather_analysis/2019-04-14-weather-analysis/</loc>
+    <loc>/post/weather_analysis/weather-analysis/</loc>
     <lastmod>2019-04-14T00:00:00+00:00</lastmod>
   </url>
   
@@ -29,6 +29,12 @@
   
   <url>
     <loc>/</loc>
+    <lastmod>2019-05-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
     <lastmod>2019-05-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>

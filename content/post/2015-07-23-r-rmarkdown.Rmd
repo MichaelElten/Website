@@ -2,7 +2,7 @@
 title: "First Post"
 author: "Frida Gomam"
 date: '2015-07-23'
-# slug: first-post
+slug: first-post
 categories:
   - R
 Tags:

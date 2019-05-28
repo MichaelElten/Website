@@ -2,7 +2,7 @@
 title: About
 author: Michael
 date: '2019-05-18'
-slug: about
+# slug: about
 categories: []
 tags: []
 menu: main
@@ -11,3 +11,5 @@ menu: main
 This is my about page - where I will give an overview of the blog.
 
 See my CV [here](/Vitae.pdf) 
+
+<!-- See my Presentations [here](2019-05-20-presentations.html) -->
