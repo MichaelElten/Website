@@ -1,14 +1,14 @@
 theme = "hugo-geo-master"
  
 [params]
-categories = ["Blog Post","About"]
-baseURL = "http://example.org/"
+categories = ["Blog Post","About"] 
+baseURL = "http://casualinferences.com/"
 languageCode = "en-us"
 title = "Casual Inferences"
 subtitle = "A blog by Michael Elten"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
-
+ 
 #Social media buttons!
 
 [[params.socialbuttons]]
