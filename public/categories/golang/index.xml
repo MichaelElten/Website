@@ -1,24 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Golang on </title>
-    <link>/categories/golang/</link>
-    <description>Recent content in Golang on </description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 18 May 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/golang/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Sat, 18 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description> About meThis is my about page - where I will give an overview of the blog
-</description>
-    </item>
-    
-  </channel>
-</rss>
