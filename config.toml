@@ -3,7 +3,8 @@ theme = "hugo-geo-master"
 [params]
 
   categories = ["Blog Post","About"] 
-  baseURL = "http://casualinferences.com/"
+  relativeURLs= false
+  BaseURL = "http://casualinferences.com/"
   languageCode = "en-us"
   title = "Casual Inferences"
   subtitle = "A work in progress blog by Michael Elten"
