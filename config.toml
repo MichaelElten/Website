@@ -11,7 +11,6 @@ paginate = 5
 	tutorial = "tutorials"
 
 [params]
-	showglobe = true
 
 	favicon = "favicon.ico"
 
@@ -21,8 +20,6 @@ paginate = 5
 	twitter = "https://twitter.com/MichaelElten"
 	linkedin = "https://www.linkedin.com/in/michael-elten-496115118/"
 	email = "elten.michael@gmail.com"
-	
-	profilepic = "img/profile.png"
 	
 	title = "Casual Inferences"
 	subtitle = "A WIP blog by Michael Elten"
