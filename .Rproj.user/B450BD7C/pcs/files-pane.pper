@@ -1,8 +1,8 @@
 {
-    "path" : "C:/Michael/R projects/Website/content/post",
+    "path" : "C:/Michael/R projects/Website/themes/hugo-geo-master",
     "sortOrder" : [
         {
-            "ascending" : false,
+            "ascending" : true,
             "columnIndex" : 2
         }
     ]

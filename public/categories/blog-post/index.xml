@@ -1,36 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Blog Post on </title>
-    <link>/categories/blog-post/</link>
-    <description>Recent content in Blog Post on </description>
-    <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 14 Apr 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/blog-post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Weather Analysis</title>
-      <link>/post/weather-analysis/</link>
-      <pubDate>Sun, 14 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/post/weather-analysis/</guid>
-      <description>The settingI wanted to look at the weather this past winter and compare it to historical data. Luckily for me, there is an excellent publically available data source for historical weather data, provided by Environment Canada
-SnowfallLooking at previous snowfalls now. First you install all packages
-library(&amp;quot;tidyverse&amp;quot;)library(&amp;quot;ggridges&amp;quot;)library(&amp;quot;viridis&amp;quot;)library(&amp;quot;lubridate&amp;quot;)library(&amp;quot;gganimate&amp;quot;)library(&amp;quot;gifski&amp;quot;)Here is a picture of Skyfall: </description>
-    </item>
-    
-    <item>
-      <title>First Post</title>
-      <link>/post/first-post/</link>
-      <pubDate>Thu, 23 Jul 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/post/first-post/</guid>
-      <description>DescriptionThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
-    </item>
-    
-  </channel>
-</rss>

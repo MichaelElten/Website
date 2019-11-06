@@ -29,4 +29,9 @@ library("gganimate")
 library("gifski")
 ```
 
-Here is a picture of Skyfall: ![](skyfall.jpg)
+Here is a picture of Skyfall: ![](/img/skyfall.jpg)
+
+
+## This is a test!
+
+testing
