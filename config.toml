@@ -1,35 +1,39 @@
-theme = "hugo-geo-master"
- 
+baseurl = "http://replace-this-with-your-hugo-site.com/"
+relativeURLs = false
+languageCode = "en-us"
+title = "My New Hugo Site"
+disqusShortname = "shortcode-here"
+paginate = 5
+
+[taxonomies]
+	tag = "tags"
+	tutorial = "tutorials"
+
 [params]
+	showglobe = true
 
-  categories = ["Blog Post","About"] 
-  relativeURLs= false
-  BaseURL = "http://casualinferences.com/"
-  languageCode = "en-us"
-  title = "Casual Inferences"
-  subtitle = "A work in progress blog by Michael Elten"
-  ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+	favicon = "favicon.ico"
 
-#Social media buttons!
+	analytics = "code-here"
 
-[[params.socialbuttons]]
-	faicon = "twitter"
-	url = "https://twitter.com/MichaelElten"
-
-[[params.socialbuttons]]
-	faicon = "linkedin"
-	url = "https://linkedin.com"
-
-[[params.socialbuttons]]
-	faicon = "github"
-	url = "https://github.com/MichaelElten"
-
-# Navigation links!
-    
-[[params.navlinks]]
-name= "About me"
-url = "about/"  
-
-[[params.navlinks]]
-name= "Blog"
-url = "post/" 
+	github = "https://github.com/alexurquhart"
+	twitter = "https://twitter.com/alexanderurq"
+	linkedin = "https://www.linkedin.com/profile/view?id=339355941"
+	email = "alexurquhart@gmail.com"
+	
+	profilepic = "img/profile.png"
+	
+	title = "MY NAME"
+	subtitle = "MY HUGO BLOG"
+	
+	[[params.navlinks]]
+	name = "About"
+	url = "about"
+	
+	[[params.navlinks]]
+	name = "Blog"
+	url = ""
+	
+	[[params.navlinks]]
+	name = "Tutorials"
+	url = "tutorial/"

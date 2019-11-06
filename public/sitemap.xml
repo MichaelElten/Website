@@ -28,26 +28,8 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2019-05-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>/about/</loc>
     <lastmod>2019-05-20T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/blog-post/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -70,6 +52,12 @@
   </url>
   
   <url>
+    <loc>/</loc>
+    <lastmod>2019-05-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/post/</loc>
     <lastmod>2019-04-14T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -84,6 +72,11 @@
   <url>
     <loc>/tags/</loc>
     <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tutorials/</loc>
     <priority>0</priority>
   </url>
   
