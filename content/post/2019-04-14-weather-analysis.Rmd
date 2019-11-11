@@ -195,7 +195,7 @@ canal_data <- read_csv("canal_dates.csv")
 Here I visualize the start and end of each of the past 49 canal skating seasons. I have highlighted the past 4 seasons as well.
 
 
-```{r Canal1, warning=FALSE, message=FALSE}
+```{r Canal1, results=FALSE, warning=FALSE, message=FALSE}
 canal_data %>%
   arrange(desc(season_length)) %>%
   mutate(winter_season=factor(winter_season,winter_season)) %>%
