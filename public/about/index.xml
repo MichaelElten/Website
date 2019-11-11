@@ -32,15 +32,5 @@
 Peer-reviewed()Not Peer-reviewed()</description>
     </item>
     
-    <item>
-      <title>About</title>
-      <link>/about/about/</link>
-      <pubDate>Sat, 18 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/about/about/</guid>
-      <description>This is my about page - where I will give an overview of the blog.
-See my CV here</description>
-    </item>
-    
   </channel>
 </rss>

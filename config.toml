@@ -13,13 +13,21 @@ paginate = 5
 [params]
 
 	favicon = "favicon.ico"
-
 	analytics = "code-here"
-
-	github = "https://github.com/MichaelElten"
-	twitter = "https://twitter.com/MichaelElten"
-	linkedin = "https://www.linkedin.com/in/michael-elten-496115118/"
 	email = "elten.michael@gmail.com"
+	
+	[[params.socialbuttons]]
+	faicon = "github"
+	url = "https://github.com/MichaelElten"
+
+	[[params.socialbuttons]]
+	faicon = "twitter"
+	url = "https://twitter.com/MichaelElten"
+	
+	[[params.socialbuttons]]
+	faicon = "linkedin"
+	url = "https://www.linkedin.com/in/michael-elten-496115118/"
+
 	
 	title = "Casual Inferences"
 	subtitle = "A WIP blog by Michael Elten"

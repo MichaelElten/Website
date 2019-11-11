@@ -13,13 +13,13 @@
   </url>
   
   <url>
-    <loc>/about/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2019-05-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/post/weather-analysis/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+    <loc>/post/ottawa-winters/</loc>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -41,7 +41,7 @@
   
   <url>
     <loc>/tags/data-visualization/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -53,25 +53,25 @@
   
   <url>
     <loc>/tags/gganimate/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/ridgeplot/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <lastmod>2019-04-14T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
