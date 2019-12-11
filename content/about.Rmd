@@ -10,6 +10,8 @@ menu: main
 
 This is my about page - where I will give an overview of the blog.
 
-See my CV [here](/Vitae.pdf) 
+![runpic](/run_pic.jpeg)
 
-<!-- See my Presentations [here](2019-05-20-presentations.html) -->
+See my presentations here: [here](/presentations.html)
+
+See my CV [here](/Vitae.pdf)

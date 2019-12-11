@@ -14,24 +14,98 @@ slug: ottawa-winters
 
 <div id="the-setting" class="section level2">
 <h2>The setting</h2>
-<p>It was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters in recent memory, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.</p>
+<p>It was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.</p>
 <p>Luckily for me, there is an excellent publically available data source for historical Canadian weather data, provided by <a href="http://climate.weather.gc.ca/historical_data/search_historic_data_e.html">Environment Canada</a>.</p>
 </div>
 <div id="load-packages-and-import-data" class="section level2">
 <h2>Load packages and import data</h2>
 <p>First I load the packages. If you don’t have some of these installed, you will need to run the command <code>install.packages()</code>.</p>
-<pre class="r"><code>library(&quot;tidyverse&quot;)
-library(&quot;ggridges&quot;)
-library(&quot;viridis&quot;)
-library(&quot;lubridate&quot;)
-library(&quot;gganimate&quot;)
-library(&quot;gifski&quot;)</code></pre>
+<pre class="r"><code>library(&quot;tidyverse&quot;) #data manipulation and plotting
+library(&quot;ggridges&quot;) #ridgeplots
+library(&quot;viridis&quot;) #colour scale
+library(&quot;lubridate&quot;) #date parsing
+library(&quot;gganimate&quot;) #animation of plots
+library(&quot;gifski&quot;) #animation of plots
+library(&quot;knitr&quot;) #creation of tables</code></pre>
 <p>Now to import the data - I chose to download weather data from January 1st 2015 to March 18 2019. You can access the unformatted CSV here.</p>
 <p>*Note: the data starts at row 25 so I use the <code>skip=25</code> option. The date is recorded as “dd/mm/yyyy” so <code>parse_date</code> function is used so that R can recognize it as a date variable.</p>
 <pre class="r"><code>setwd(&quot;C:\\Michael\\R projects\\Weather\\Weather-analysis&quot;)
 
 Data&lt;-read_csv(&quot;WeatherData_YOW.csv&quot;, col_names=TRUE, skip=25) %&gt;%
   mutate(`Date/Time`=parse_date(`Date/Time`, &quot;%d/%m/%Y&quot;))</code></pre>
+<p>Here is a sample of what the data looked like:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Date/Time</th>
+<th align="center">Year</th>
+<th align="center">Month</th>
+<th align="center">Day</th>
+<th align="center">Data Quality</th>
+<th align="center">Max Temp (°C)</th>
+<th align="center">Max Temp Flag</th>
+<th align="center">Min Temp (°C)</th>
+<th align="center">Min Temp Flag</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">2015-01-01</td>
+<td align="center">2015</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">NA</td>
+<td align="center">-3.0</td>
+<td align="center">NA</td>
+<td align="center">-8.1</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td align="center">2015-01-02</td>
+<td align="center">2015</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">NA</td>
+<td align="center">-3.8</td>
+<td align="center">NA</td>
+<td align="center">-15.8</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td align="center">2015-01-03</td>
+<td align="center">2015</td>
+<td align="center">1</td>
+<td align="center">3</td>
+<td align="center">NA</td>
+<td align="center">-9.6</td>
+<td align="center">NA</td>
+<td align="center">-15.5</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td align="center">2015-01-04</td>
+<td align="center">2015</td>
+<td align="center">1</td>
+<td align="center">4</td>
+<td align="center">NA</td>
+<td align="center">-0.4</td>
+<td align="center">NA</td>
+<td align="center">-9.6</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td align="center">2015-01-05</td>
+<td align="center">2015</td>
+<td align="center">1</td>
+<td align="center">5</td>
+<td align="center">NA</td>
+<td align="center">-8.6</td>
+<td align="center">NA</td>
+<td align="center">-21.9</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div id="manipulating-the-dataset" class="section level2">
 <h2>Manipulating the dataset</h2>
@@ -156,7 +230,9 @@ canal_data &lt;- read_csv(&quot;canal_dates.csv&quot;)
          season_length=end_day - start_day,
          highlight=ifelse(winter_season %in% c(&quot;Winter 2019&quot;,&quot;Winter 2018&quot;,&quot;Winter 2017&quot;,&quot;Winter 2016&quot;), &quot;Yes&quot;,&quot;No&quot;))</code></pre>
 <p>Here I visualize the start and end of each of the past 49 canal skating seasons. I have highlighted the past 4 seasons as well.</p>
-<pre class="r"><code>canal_data %&gt;%
+<pre class="r"><code>png(file=&quot;canalplot.png&quot;, width=500, height = 650)   
+
+canal_data %&gt;%
   arrange(desc(season_length)) %&gt;%
   mutate(winter_season=factor(winter_season,winter_season)) %&gt;%
   ggplot() +
@@ -176,11 +252,9 @@ canal_data &lt;- read_csv(&quot;canal_dates.csv&quot;)
   theme_bw() + 
   theme(plot.title = element_text(size=16),
         axis.text = element_text(size=12, colour=&quot;black&quot;),
-        plot.subtitle = element_text(size=12))</code></pre>
-<p><img src="/post/2019-04-14-weather-analysis_files/figure-html/Canal1-1.png" width="672" /></p>
-<p>Here is the plot:</p>
-<div class="figure">
-<img src="/img/canalplot.png" alt="canalplot" />
-<p class="caption">canalplot</p>
-</div>
+        plot.subtitle = element_text(size=12))
+
+dev.off()</code></pre>
+<p>This figure doesn’t preview well in R, so I export it to png with a specified height and weight. Here is the plot:</p>
+<p><img src="/img/canalplot.png" /></p>
 </div>

@@ -13,10 +13,10 @@
     
     <item>
       <title>Presentations</title>
-      <link>/about/presentations/</link>
+      <link>/post/presentations/</link>
       <pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/about/presentations/</guid>
+      <guid>/post/presentations/</guid>
       <description>This is a list of my previous presentations:first talk: link.
 Second talk: link.
 </description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>Publications</title>
-      <link>/about/publications/</link>
+      <link>/post/publications/</link>
       <pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/about/publications/</guid>
+      <guid>/post/publications/</guid>
       <description>All my hard-earned publicationsI don’t really have any yet! :(
 Peer-reviewed()Not Peer-reviewed()</description>
     </item>
@@ -39,6 +39,8 @@
       
       <guid>/about/</guid>
       <description>This is my about page - where I will give an overview of the blog.
+runpic
+See my presentations here: here
 See my CV here</description>
     </item>
     
@@ -48,7 +50,7 @@ See my CV here</description>
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/post/ottawa-winters/</guid>
-      <description>The settingIt was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters in recent memory, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.
+      <description>The settingIt was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.
 Luckily for me, there is an excellent publically available data source for historical Canadian weather data, provided by Environment Canada.</description>
     </item>
     

@@ -12,7 +12,7 @@ slug: ottawa-winters
 
 ## The setting
 
-It was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters in recent memory, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.
+It was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.
 
 Luckily for me, there is an excellent publically available data source for historical Canadian weather data, provided by [Environment Canada](http://climate.weather.gc.ca/historical_data/search_historic_data_e.html).
 
@@ -20,13 +20,14 @@ Luckily for me, there is an excellent publically available data source for histo
 
 First I load the packages. If you don't have some of these installed, you will need to run the command `install.packages()`.
 
-```{r installation, echo=TRUE, results='hide', warning=FALSE, message=FALSE}
-library("tidyverse")
-library("ggridges")
-library("viridis")
-library("lubridate")
-library("gganimate")
-library("gifski")
+```{r installation, echo=TRUE, results='hide', warning=FALSE, message=FALSE, cache=TRUE}
+library("tidyverse") #data manipulation and plotting
+library("ggridges") #ridgeplots
+library("viridis") #colour scale
+library("lubridate") #date parsing
+library("gganimate") #animation of plots
+library("gifski") #animation of plots
+library("knitr") #creation of tables
 ```
 
 
@@ -34,13 +35,21 @@ Now to import the data - I chose to download weather data from January 1st 2015 
 
 *Note: the data starts at row 25 so I use the `skip=25` option. The date is recorded as "dd/mm/yyyy" so `parse_date` function is used so that R can recognize it as a date variable.
 
-```{r import, results='hide', warning=FALSE, message=FALSE}
+```{r import, results='hide', warning=FALSE, message=FALSE, cache=TRUE}
 setwd("C:\\Michael\\R projects\\Weather\\Weather-analysis")
 
 Data<-read_csv("WeatherData_YOW.csv", col_names=TRUE, skip=25) %>%
   mutate(`Date/Time`=parse_date(`Date/Time`, "%d/%m/%Y"))
 
 ```
+
+
+Here is a sample of what the data looked like:
+
+```{r, echo=FALSE}
+knitr::kable(Data[1:5,1:9], align = 'c', padding=4)
+```
+
 
 ## Manipulating the dataset
 
@@ -52,7 +61,7 @@ Here I do a couple of cleaning steps in the same workflow:
 
 (3) I create a new variable, `obs_order`, which assigns each day a number according to its order during the winter season
 
-```{r cleaning}
+```{r cleaning, cache=TRUE}
 winter_only_data <-Data %>%
   mutate(winter_season= ifelse(Month<4, Year, Year+1)) %>%
   mutate(winter_season2=str_c("Winter ",winter_season)) %>%
@@ -72,7 +81,7 @@ winter_only_data <-Data %>%
 
 The first thing I decided to explore was the amount of snow that has fallen this past winter. Here we are visualizing the amount of snow on the ground over time. 
 
-```{r Snowfall, warning=FALSE, message=FALSE}
+```{r Snowfall, warning=FALSE, message=FALSE, cache=TRUE}
 
 #Lineplot animation of most recent winter
 snow_animate<-winter_only_data %>%
@@ -94,7 +103,7 @@ animate(snow_animate, renderer = gifski_renderer(loop = T))
 
 I then used `geom_density_ridges` to look at how the snow on the ground in the past winter has compared to previous winters.
 
-```{r Snowfall2, warning=FALSE, message=FALSE}
+```{r Snowfall2, warning=FALSE, message=FALSE, cache=TRUE}
 # Ridgeplot comparison of snow on ground for past 4 winters
 winter_only_data %>%
   select(obs_order, `Snow on Grnd (cm)`, winter_season2) %>%
@@ -118,7 +127,7 @@ Now I wanted to look at the distribution of mean daily temperatures over the pas
 
 Note: If I were to do this again I would rename the temperature variable. R doesn't really play nice with special characters as variable names and I had a few errord related to this that took me awhile to diagnose. 
 
-```{r Temperature1, warning=FALSE, message=FALSE}
+```{r Temperature1, warning=FALSE, message=FALSE, cache=TRUE}
 winter_only_data %>%
   select(`Date/Time`, `Mean Temp (°C)`, winter_season2) %>%
   na.omit() %>%
@@ -141,7 +150,7 @@ winter_only_data %>%
 
 Now to look at the mean daily temperatures across the past 4 winters. I decided to highlight days where the mean temperature was over 0 in red, and below -20 in blue.
 
-```{r Temperature2, warning=FALSE, message=FALSE}
+```{r Temperature2, warning=FALSE, message=FALSE, cache=TRUE}
 
 temp_animate<-winter_only_data %>%
   mutate(colour=case_when(`Mean Temp (°C)`>= 0 ~ "above 0",
@@ -175,7 +184,7 @@ First I need to find a suitable and credible data source for canal seasons. The 
 
 The table that I wanted was small enough that I found it easiest to just copy and paste it into excel and save the data as a CSV, here. 
 
-```{r ImportCanal, warning=FALSE, message=FALSE}
+```{r ImportCanal, warning=FALSE, message=FALSE, cache=TRUE}
 setwd("C:\\Michael\\R projects\\Weather\\Weather-analysis")
 
 canal_data <- read_csv("canal_dates.csv")
@@ -195,7 +204,10 @@ canal_data <- read_csv("canal_dates.csv")
 Here I visualize the start and end of each of the past 49 canal skating seasons. I have highlighted the past 4 seasons as well.
 
 
-```{r Canal1, results=FALSE, warning=FALSE, message=FALSE}
+```{r Canal1, eval=FALSE, cache=TRUE}
+
+png(file="canalplot.png", width=500, height = 650)   
+
 canal_data %>%
   arrange(desc(season_length)) %>%
   mutate(winter_season=factor(winter_season,winter_season)) %>%
@@ -218,8 +230,10 @@ canal_data %>%
         axis.text = element_text(size=12, colour="black"),
         plot.subtitle = element_text(size=12))
 
+dev.off()
+
 ```
 
-Here is the plot: 
+This figure doesn't preview well in R, so I export it to png with a specified height and weight. Here is the plot: 
 
-![canalplot](/img/canalplot.png)
+![](/img/canalplot.png)

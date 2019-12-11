@@ -1,0 +1,16 @@
+---
+title: Publications
+author: Michael Elten
+date: '2019-05-20'
+slug: publications
+categories: []
+tags: []
+---
+
+## All my hard-earned publications
+
+I don't really have any yet! :(
+
+# Peer-reviewed()
+
+# Not Peer-reviewed()   
