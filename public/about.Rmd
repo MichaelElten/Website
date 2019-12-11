@@ -8,10 +8,8 @@ tags: []
 menu: main
 --- 
 
-This is my about page - where I will give an overview of the blog.
+Hi, my name is Michael and this is my blog page that I will update on my spare time to highlight various projects and methods that I have learnt! 
 
-![runpic](/run_pic.jpeg)
+Don't mind the mess, I am currently still setting things up!
 
-See my presentations here: [here](/presentations.html)
-
-See my CV [here](/Vitae.pdf)
+Download a pdf of my CV [here](/Vitae.pdf)

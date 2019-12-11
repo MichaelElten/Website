@@ -12,6 +12,9 @@ paginate = 5
 
 [params]
 
+	title = "Casual Inferences"
+	subtitle = "A blog by Michael Elten"
+	
 	favicon = "favicon.ico"
 	analytics = "code-here"
 	email = "elten.michael@gmail.com"
@@ -29,17 +32,18 @@ paginate = 5
 	url = "https://www.linkedin.com/in/michael-elten-496115118/"
 
 	
-	title = "Casual Inferences"
-	subtitle = "A WIP blog by Michael Elten"
-	
 	[[params.navlinks]]
 	name = "About"
-	url = "about/"
+	url = "about"
 	
 	[[params.navlinks]]
 	name = "Blog"
 	url = ""
 	
 	[[params.navlinks]]
-	name = "Tutorials"
-	url = "tutorial/"
+	name = "Publications"
+	url = "publications"
+	
+  [[params.navlinks]]
+	name = "Presentations"
+	url = "presentations"

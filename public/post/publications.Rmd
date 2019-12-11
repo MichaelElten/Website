@@ -5,6 +5,7 @@ date: '2019-05-20'
 slug: publications
 categories: []
 tags: []
+draft: true
 ---
 
 ## All my hard-earned publications
