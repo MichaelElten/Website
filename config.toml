@@ -1,49 +1,70 @@
-baseurl = "http://casualinferences.com/"
-relativeURLs = false
-languageCode = "en-us"
+## Basic Configuration
+baseurl = "/"
+languageCode = "en"
+
 title = "Casual Inferences"
-subtitle = "A WIP blog by Michael Elten"
-disqusShortname = "shortcode-here"
-paginate = 5
 
-[taxonomies]
-	tag = "tags"
-	tutorial = "tutorials"
+theme = "hyde-hyde"
 
+## Hugo Built-in Features
+# disqusShortname = "your-disqus-shortname"
+# googleAnalytics = "your-google-analytics-id"
+# enableRobotsTXT = true
+
+# summarylength = 30
+
+#paginate = 5
+
+## Site Settings
 [params]
+    author = "Author"
+    title = "Title"
+    description = "A WIP blog by ME"
+    authorimage = "/img/Michael_BW.jpg"
+    dateformat = "Jan 2, 2006"
+    mainSections = ["portfolio","posts"]
+    
+    # sidebar, copyright & license
+    copyright = "Michael Elten"
+    since = 2019
+    license = "CC BY-SA 4.0"
+    licenseURL = "https://creativecommons.org/licenses/by-sa/4.0"
+    showBuiltWith = false
 
-	title = "Casual Inferences"
-	subtitle = "A blog by Michael Elten"
-	
-	favicon = "favicon.ico"
-	analytics = "code-here"
-	email = "elten.michael@gmail.com"
-	
-	[[params.socialbuttons]]
-	faicon = "github"
-	url = "https://github.com/MichaelElten"
+    # https://highlightjs.org
+    highlightjs = true
+    highlightjsstyle = "github"
+    
+    # please choose either GraphComment or Disqus or Utterances
+    #GraphCommentId = "..."
+    #UtterancesRepo = "..." # https://utteranc.es/
+    #UtterancesIssueTerm = "..." # pathname, url, title, og:title
+    #UtterancesTheme = "..." # github-light or github-dark
 
-	[[params.socialbuttons]]
-	faicon = "twitter"
-	url = "https://twitter.com/MichaelElten"
-	
-	[[params.socialbuttons]]
-	faicon = "linkedin"
-	url = "https://www.linkedin.com/in/michael-elten-496115118/"
+    # Table of contents
+    #toc = none, "hugo", or "tocbot"
 
-	
-	[[params.navlinks]]
-	name = "About"
-	url = "about"
-	
-	[[params.navlinks]]
-	name = "Blog"
-	url = ""
-	
-	[[params.navlinks]]
-	name = "Publications"
-	url = "publications"
-	
-  [[params.navlinks]]
-	name = "Presentations"
-	url = "presentations"
+## Social Accounts
+[params.social]
+    github = "MichaelElten"
+    linkedin = "michael-elten-496115118/"
+    twitter = "MichaelElten"
+    email = "elten.michael@gmail.com"
+
+
+## Main Menu
+[[menu.main]]
+    name = "Posts"
+    weight = 100
+    identifier = "posts"
+    url = "/posts/"
+[[menu.main]]
+    name = "Portfolio"
+    identifier = "portfolio"
+    weight = 200
+    url = "/portfolio/"
+[[menu.main]]
+    name = "About"
+    identifier = "about"
+    weight = 300
+    url = "/about/"

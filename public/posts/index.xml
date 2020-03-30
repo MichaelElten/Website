@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Casual Inferences</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on Casual Inferences</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 27 Mar 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ottawa Winters</title>
+      <link>/posts/weather/ottawa-winters/</link>
+      <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/weather/ottawa-winters/</guid>
+      <description>The settingIt was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.
+Luckily for me, there is an excellent publically available data source for historical Canadian weather data, provided by Environment Canada.</description>
+    </item>
+    
+  </channel>
+</rss>

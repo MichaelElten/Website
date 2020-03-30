@@ -1,26 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tutorial on Casual Inferences</title>
-    <link>/tags/tutorial/</link>
-    <description>Recent content in Tutorial on Casual Inferences</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 20 May 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Presentations</title>
-      <link>/presentations/</link>
-      <pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/presentations/</guid>
-      <description>This is a list of my previous presentations:Note: links to presentation materials are provided for illustration purposes only and may only represent preliminary findings that have since changed. Please refer to the publications for final results.
-Air pollution and greenness, and the risk of paediatric-onset inflammatory bowel disease. August 2019. International Society of Environmental Epidemiology (ISEE) 2019 Conference. Utrecht, the Netherlands. Poster
-Greenness as a protective factor for childhood-onset inflammatory bowel disease?</description>
-    </item>
-    
-  </channel>
-</rss>

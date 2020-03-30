@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Casual Inferences</title>
     <link>/tags/</link>
     <description>Recent content in Tags on Casual Inferences</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>en</language>
     <lastBuildDate>Wed, 27 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -21,16 +21,7 @@
     </item>
     
     <item>
-      <title>Default</title>
-      <link>/tags/default/</link>
-      <pubDate>Thu, 23 Jul 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/default/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Gganimate</title>
+      <title>GGanimate</title>
       <link>/tags/gganimate/</link>
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
       
@@ -44,15 +35,6 @@
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/tags/ridgeplot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tutorial</title>
-      <link>/tags/tutorial/</link>
-      <pubDate>Mon, 20 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/tutorial/</guid>
       <description></description>
     </item>
     

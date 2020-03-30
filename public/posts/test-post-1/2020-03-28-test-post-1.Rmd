@@ -1,0 +1,19 @@
+---
+title: AAA test post 1
+author: Michael Elten
+date: '2020-03-28'
+slug: test-post-1
+categories:
+  - Analysis
+tags:
+  - GGplot
+  - GGanimate
+lastmod: '2020-03-28T19:40:01-04:00'
+layout: posts
+type: posts
+highlight: yes
+---
+
+**Insert Lead paragraph here.**
+
+Hey Hey Hey
