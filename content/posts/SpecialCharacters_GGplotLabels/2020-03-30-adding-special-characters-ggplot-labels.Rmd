@@ -1,0 +1,48 @@
+---
+title: Adding special characters in GGplot labels
+author: Michael Elten
+date: '2020-03-30'
+slug: adding-special-characters-ggplot-labels
+categories: []
+tags: []
+lastmod: '2020-03-30T18:04:51-04:00'
+layout: posts
+type: posts
+highlight: no
+Description: 'Using special characters in GGplot labels'
+
+--- 
+
+I find that I will often need to add special characters such as "`r paste0("\u00b5")`" in my figure labels. This is an example of one solution I found to add special characters into them. The solution? Unicode characters.
+
+Unicode is a standardized coding scheme for characters of all languages. As of March 2020, there are close to 150,000 different characters with a corresponding unicode designation. To call a unicode symbol in R, you can simply type the corresponding sequence in a quoted string such as "\\u03b1" which will print `r paste0("\u03b1")`. 
+
+I often need to label the axis of a plot with units such as "`r paste0("(\u00b5g/m\u00b3)")`". The below example shows how you would do this.
+
+```{r initialize}
+library(ggplot2)
+library(knitr)
+
+x<-1:10
+y<-1:10
+data<-data.frame(x,y)
+
+ggplot(data,aes(x, y)) + 
+  geom_point() + 
+  labs(title="Title",
+       x= "concentration (\u00b5g/m\u00b3)",    
+       y= "y-axis title")
+```
+  
+Pretty straightforward. I have heard of other ways, such as using bquote() function, or the latex2exp package but this method serves my usage well for now! See below for a table of characters that you may need to use, with their unicode (remember that you will need to insert the backslash "\\" in order to correctly call the character). You can also just google the unicode value for a desired character.
+
+## Quick reference table
+
+```{r, echo=FALSE, message=FALSE}
+character<-c("degree","alpha","beta","mu","ohm","squared","cubed","subscript number", "e accent aigu", "e accent grave")
+output<-c("\u00b0","\u03b1", "\u03b2", "\u00b5","\u03a9", "\u00b2", "\u00b3","\u2082", "\u00e9", "\u00e8")
+unicode<-c("u00b0","u03b1", "u03b2", "u00b2", "u03a9","u00b3", "u00b5","u208_","u00e9", "u00e8")
+
+table<-data.frame(character, output, unicode)
+kable(table)
+``` 

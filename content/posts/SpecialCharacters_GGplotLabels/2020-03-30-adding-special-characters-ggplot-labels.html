@@ -1,0 +1,98 @@
+---
+title: Adding special characters in GGplot labels
+author: Michael Elten
+date: '2020-03-30'
+slug: adding-special-characters-ggplot-labels
+categories: []
+tags: []
+lastmod: '2020-03-30T18:04:51-04:00'
+layout: posts
+type: posts
+highlight: no
+Description: 'Using special characters in GGplot labels'
+
+--- 
+
+
+
+<p>I find that I will often need to add special characters such as “µ” in my figure labels. This is an example of one solution I found to add special characters into them. The solution? Unicode characters.</p>
+<p>Unicode is a standardized coding scheme for characters of all languages. As of March 2020, there are close to 150,000 different characters with a corresponding unicode designation. To call a unicode symbol in R, you can simply type the corresponding sequence in a quoted string such as “\u03b1” which will print α.</p>
+<p>I often need to label the axis of a plot with units such as “(µg/m³)”. The below example shows how you would do this.</p>
+<pre class="r"><code>library(ggplot2)
+library(knitr)
+
+x&lt;-1:10
+y&lt;-1:10
+data&lt;-data.frame(x,y)
+
+ggplot(data,aes(x, y)) + 
+  geom_point() + 
+  labs(title=&quot;Title&quot;,
+       x= &quot;concentration (\u00b5g/m\u00b3)&quot;,    
+       y= &quot;y-axis title&quot;)</code></pre>
+<p><img src="/posts/SpecialCharacters_GGplotLabels/2020-03-30-adding-special-characters-ggplot-labels_files/figure-html/initialize-1.png" width="672" /></p>
+<p>Pretty straightforward. I have heard of other ways, such as using bquote() function, or the latex2exp package but this method serves my usage well for now! See below for a table of characters that you may need to use, with their unicode (remember that you will need to insert the backslash “\” in order to correctly call the character). You can also just google the unicode value for a desired character.</p>
+<div id="quick-reference-table" class="section level2">
+<h2>Quick reference table</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">character</th>
+<th align="left">output</th>
+<th align="left">unicode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">degree</td>
+<td align="left">°</td>
+<td align="left">u00b0</td>
+</tr>
+<tr class="even">
+<td align="left">alpha</td>
+<td align="left">α</td>
+<td align="left">u03b1</td>
+</tr>
+<tr class="odd">
+<td align="left">beta</td>
+<td align="left">β</td>
+<td align="left">u03b2</td>
+</tr>
+<tr class="even">
+<td align="left">mu</td>
+<td align="left">µ</td>
+<td align="left">u00b2</td>
+</tr>
+<tr class="odd">
+<td align="left">ohm</td>
+<td align="left">Ω</td>
+<td align="left">u03a9</td>
+</tr>
+<tr class="even">
+<td align="left">squared</td>
+<td align="left">²</td>
+<td align="left">u00b3</td>
+</tr>
+<tr class="odd">
+<td align="left">cubed</td>
+<td align="left">³</td>
+<td align="left">u00b5</td>
+</tr>
+<tr class="even">
+<td align="left">subscript number</td>
+<td align="left">₂</td>
+<td align="left">u208_</td>
+</tr>
+<tr class="odd">
+<td align="left">e accent aigu</td>
+<td align="left">é</td>
+<td align="left">u00e9</td>
+</tr>
+<tr class="even">
+<td align="left">e accent grave</td>
+<td align="left">è</td>
+<td align="left">u00e8</td>
+</tr>
+</tbody>
+</table>
+</div>

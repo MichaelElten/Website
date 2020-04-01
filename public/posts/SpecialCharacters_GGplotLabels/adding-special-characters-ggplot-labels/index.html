@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.68.3" />
+
+    
+    
+    
+
+<title>Adding special characters in GGplot labels • Casual Inferences</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Adding special characters in GGplot labels"/>
+<meta name="twitter:description" content="Using special characters in GGplot labels"/>
+
+<meta property="og:title" content="Adding special characters in GGplot labels" />
+<meta property="og:description" content="Using special characters in GGplot labels" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/specialcharacters_ggplotlabels/adding-special-characters-ggplot-labels/" />
+<meta property="article:published_time" content="2020-03-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-03-30T18:04:51-04:00" /><meta property="og:site_name" content="Title" />
+
+
+    
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.5e271fb210687f0007c413eb161ddad0e1b19b61b9747e04eb701512b787f113.css" integrity="sha256-XicfshBofwAHxBPrFh3a0OGxm2G5dH4E63AVEreH8RM=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="/">Casual Inferences</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="/img/Michael_BW.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         A WIP blog by ME 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Casual Inferences</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Portfolio</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/MichaelElten" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/MichaelElten" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/michael-elten-496115118/" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:elten.michael@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2019 - 2020 Michael Elten
+  
+    <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+  
+</div>
+
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>Adding special characters in GGplot labels</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Mar 30, 2020
+    
+    
+    
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 2 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+     
+
+
+
+<p>I find that I will often need to add special characters such as “µ” in my figure labels. This is an example of one solution I found to add special characters into them. The solution? Unicode characters.</p>
+<p>Unicode is a standardized coding scheme for characters of all languages. As of March 2020, there are close to 150,000 different characters with a corresponding unicode designation. To call a unicode symbol in R, you can simply type the corresponding sequence in a quoted string such as “\u03b1” which will print α.</p>
+<p>I often need to label the axis of a plot with units such as “(µg/m³)”. The below example shows how you would do this.</p>
+<pre class="r"><code>library(ggplot2)
+library(knitr)
+
+x&lt;-1:10
+y&lt;-1:10
+data&lt;-data.frame(x,y)
+
+ggplot(data,aes(x, y)) + 
+  geom_point() + 
+  labs(title=&quot;Title&quot;,
+       x= &quot;concentration (\u00b5g/m\u00b3)&quot;,    
+       y= &quot;y-axis title&quot;)</code></pre>
+<p><img src="/posts/SpecialCharacters_GGplotLabels/2020-03-30-adding-special-characters-ggplot-labels_files/figure-html/initialize-1.png" width="672" /></p>
+<p>Pretty straightforward. I have heard of other ways, such as using bquote() function, or the latex2exp package but this method serves my usage well for now! See below for a table of characters that you may need to use, with their unicode (remember that you will need to insert the backslash “\” in order to correctly call the character). You can also just google the unicode value for a desired character.</p>
+<div id="quick-reference-table" class="section level2">
+<h2>Quick reference table</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">character</th>
+<th align="left">output</th>
+<th align="left">unicode</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">degree</td>
+<td align="left">°</td>
+<td align="left">u00b0</td>
+</tr>
+<tr class="even">
+<td align="left">alpha</td>
+<td align="left">α</td>
+<td align="left">u03b1</td>
+</tr>
+<tr class="odd">
+<td align="left">beta</td>
+<td align="left">β</td>
+<td align="left">u03b2</td>
+</tr>
+<tr class="even">
+<td align="left">mu</td>
+<td align="left">µ</td>
+<td align="left">u00b2</td>
+</tr>
+<tr class="odd">
+<td align="left">ohm</td>
+<td align="left">Ω</td>
+<td align="left">u03a9</td>
+</tr>
+<tr class="even">
+<td align="left">squared</td>
+<td align="left">²</td>
+<td align="left">u00b3</td>
+</tr>
+<tr class="odd">
+<td align="left">cubed</td>
+<td align="left">³</td>
+<td align="left">u00b5</td>
+</tr>
+<tr class="even">
+<td align="left">subscript number</td>
+<td align="left">₂</td>
+<td align="left">u208_</td>
+</tr>
+<tr class="odd">
+<td align="left">e accent aigu</td>
+<td align="left">é</td>
+<td align="left">u00e9</td>
+</tr>
+<tr class="even">
+<td align="left">e accent grave</td>
+<td align="left">è</td>
+<td align="left">u00e8</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/covid19-search-trends/search-trends-of-covid-19/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Search trends of Covid-19</span>
+    </a>
+    
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+
+
+
+    
+
+
+
+    </body>
+</html>

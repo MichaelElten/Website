@@ -1,5 +1,5 @@
 ---
-title: "Ottawa Winters"
+title: "Ottawa Winters -2019"
 author: "Michael Elten"
 date: '2019-03-27'
 output: pdf_document
@@ -8,7 +8,8 @@ Tags:
 - Ridgeplot
 - GGanimate
 slug: ottawa-winters
-Description: ''
+Description: 'Analysis of temperatures, snow and Canal season lengths of Ottawa winters past.'
+layout: posts
 ---
 
 ## The setting
@@ -124,7 +125,7 @@ winter_only_data %>%
 Now I wanted to look at the distribution of mean daily temperatures over the past four winters. 
 
 
-Note: If I were to do this again I would rename the temperature variable. R doesn't really play nice with special characters as variable names and I had a few errord related to this that took me awhile to diagnose. 
+Note: If I were to do this again I would rename the temperature variable. R doesn't really play nice with special characters as variable names and I had a few errorS related to this that took me awhile to diagnose. 
 
 ```{r Temperature1, warning=FALSE, message=FALSE, cache=TRUE}
 winter_only_data %>%
@@ -184,7 +185,6 @@ First I need to find a suitable and credible data source for canal seasons. The 
 The table that I wanted was small enough that I found it easiest to just copy and paste it into excel and save the data as a CSV, here. 
 
 ```{r ImportCanal, warning=FALSE, message=FALSE, cache=TRUE}
-setwd("C:\\Michael\\R projects\\Weather\\Weather-analysis")
 
 canal_data <- read_csv("canal_dates.csv")
 
@@ -235,4 +235,4 @@ dev.off()
 
 This figure doesn't preview well in R, so I export it to png with a specified height and weight. Here is the plot: 
 
-![](./content/posts/Weather/canalplot.png)
+![](/img/canalplot.png)

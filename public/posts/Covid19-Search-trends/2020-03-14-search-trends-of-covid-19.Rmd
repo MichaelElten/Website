@@ -1,0 +1,47 @@
+---
+title: Search trends of Covid-19
+author: Michael Elten
+date: '2020-03-14'
+slug: search-trends-of-covid-19
+categories: []
+Tags:
+- Data Visualization
+- Ridgeplot
+- GGanimate
+Description: 'Looking at google search trends following the Covid-19 pandemic'
+
+draft: true
+---
+
+This is a post in progress!
+
+## Importing the data
+
+For this, I will use the R package "gtrendsR" for the first time. 
+
+```{r installation, echo=TRUE, results='hide', warning=FALSE, message=FALSE}
+library("dplyr")
+library("readr")
+library("gtrendsR")
+library("googlesheets4")
+```
+
+
+```{r importing data, echo=FALSE, warning=FALSE, message=FALSE}
+covid_data<-read_csv("Covid19_Canada_March26.csv", skip=3)
+```
+
+```{r getting dates}
+covid_data %>%
+  filter(provincial_case_id==100) %>%
+  select(province, date_report)
+```
+So Ontario had its 100th case on March 14th, BC on March 16th, Alberta on March 18th and Quebec on March 19th.
+
+```{r example trend}
+dp<-gtrends(c("corona virus"), time="today 1-m", geo = c("CA-ON","CA-BC","CA-QC"))
+plot(dp)
+```
+
+
+
