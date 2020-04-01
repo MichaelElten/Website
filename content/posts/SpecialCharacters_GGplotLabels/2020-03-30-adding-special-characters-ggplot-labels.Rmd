@@ -39,9 +39,9 @@ Pretty straightforward. I have heard of other ways, such as using bquote() funct
 ## Quick reference table
 
 ```{r, echo=FALSE, message=FALSE}
-character<-c("degree","alpha","beta","mu","ohm","squared","cubed","subscript number", "e accent aigu", "e accent grave")
+character<-c("degree","alpha","beta","mu","omega","squared","cubed","subscript number", "e accent aigu", "e accent grave")
 output<-c("\u00b0","\u03b1", "\u03b2", "\u00b5","\u03a9", "\u00b2", "\u00b3","\u2082", "\u00e9", "\u00e8")
-unicode<-c("u00b0","u03b1", "u03b2", "u00b2", "u03a9","u00b3", "u00b5","u208_","u00e9", "u00e8")
+unicode<-c("u00b0","u03b1", "u03b2", "u00b2", "u03a9","u00b3", "u00b5","u208_ (replace with desired number)","u00e9", "u00e8")
 
 table<-data.frame(character, output, unicode)
 kable(table)
