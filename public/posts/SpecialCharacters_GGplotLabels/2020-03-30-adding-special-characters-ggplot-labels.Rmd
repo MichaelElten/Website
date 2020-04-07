@@ -3,8 +3,9 @@ title: Adding special characters in GGplot labels
 author: Michael Elten
 date: '2020-03-30'
 slug: adding-special-characters-ggplot-labels
-categories: []
-tags: []
+categories: [Methods]
+tags: 
+- GGplot
 lastmod: '2020-03-30T18:04:51-04:00'
 layout: posts
 type: posts

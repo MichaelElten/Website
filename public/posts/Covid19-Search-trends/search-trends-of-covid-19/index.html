@@ -217,21 +217,45 @@
 <pre class="r"><code>library(&quot;dplyr&quot;)
 library(&quot;readr&quot;)
 library(&quot;gtrendsR&quot;)
-library(&quot;googlesheets4&quot;)</code></pre>
-<pre class="r"><code>covid_data %&gt;%
-  filter(provincial_case_id==100) %&gt;%
-  select(province, date_report)</code></pre>
-<pre><code>## # A tibble: 4 x 2
-##   province date_report
-##   &lt;chr&gt;    &lt;chr&gt;      
-## 1 Ontario  14-03-2020 
-## 2 BC       16-03-2020 
-## 3 Alberta  18-03-2020 
-## 4 Quebec   19-03-2020</code></pre>
-<p>So Ontario had its 100th case on March 14th, BC on March 16th, Alberta on March 18th and Quebec on March 19th.</p>
-<pre class="r"><code>dp&lt;-gtrends(c(&quot;corona virus&quot;), time=&quot;today 1-m&quot;, geo = c(&quot;CA-ON&quot;,&quot;CA-BC&quot;,&quot;CA-QC&quot;))
-plot(dp)</code></pre>
-<p><img src="/posts/Covid19-Search-trends/2020-03-14-search-trends-of-covid-19_files/figure-html/example%20trend-1.png" width="672" /></p>
+library(&quot;ggplot2&quot;)
+library(&quot;patchwork&quot;)</code></pre>
+<pre class="r"><code>plot_trend&lt;-function(keyword_string){
+data&lt;-gtrends(c(keyword_string), time= &quot;2020-01-01 2020-04-03&quot;, geo = &quot;CA&quot;)
+time_trend&lt;-data$interest_over_time %&gt;%
+  mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,hits),
+         date=as.Date(date))
+plot&lt;-ggplot(data=time_trend, aes(x=date, y=as.numeric(hits), colour=keyword)) +
+  geom_smooth(method=&quot;loess&quot;,span=0.4, se=FALSE) +
+  theme(legend.position = &quot;bottom&quot;)
+return(plot)
+}
+
+#personal care
+hair_plot&lt;-plot_trend(keyword_string = c(&quot;how to cut hair&quot;, &quot;barber&quot;))
+food_plot&lt;-plot_trend(keyword_string = c(&quot;restaurant&quot;, &quot;uber eats&quot;,&quot;food delivery&quot;))
+fitness_plot&lt;-plot_trend(keyword_string = c(&quot;dumbells&quot;, &quot;home gym&quot;,&quot;goodlife fitness&quot;,&quot;movati&quot;))
+
+#entertainment / purchasing
+hoarding_plot&lt;-plot_trend(keyword_string = &quot;toilet paper&quot;)
+videogames_plot&lt;-plot_trend(keyword_string = &quot;video games&quot;)
+baking_plot&lt;-plot_trend(keyword_string = c(&quot;how to bake bread&quot;,&quot;how to bake cookies&quot;,&quot;how to bake cake&quot;))
+streaming_plot&lt;-plot_trend(keyword_string = c(&quot;disney +&quot;,&quot;netflix&quot;,&quot;hulu&quot;,&quot;prime video&quot;))
+sports_plot&lt;-plot_trend(keyword_string = c(&quot;nba&quot;,&quot;mlb&quot;,&quot;mls&quot;,&quot;nhl&quot;))
+
+
+#parental activities
+teaching_plot&lt;-plot_trend(keyword_string = &quot;long division&quot;)
+
+# working from home
+video_plot&lt;-plot_trend(keyword_string = c(&quot;zoom&quot;,&quot;skype&quot;,&quot;webex&quot;))
+communication_plot&lt;-plot_trend(keyword_string = c(&quot;slack&quot;,&quot;discord&quot;,&quot;microsoft teams&quot;))
+homeoffice_plot&lt;-plot_trend(keyword_string = &quot;office chair&quot;)
+
+#Covid-19 related stuff</code></pre>
+<pre class="r"><code>## Combining plots: patchwork, or pubr packages...
+video_plot</code></pre>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="/posts/Covid19-Search-trends/2020-03-14-search-trends-of-covid-19_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
 </div>
 
   </div>

@@ -1,0 +1,86 @@
+---
+title: Search trends during Covid-19
+author: Michael Elten
+date: '2020-04-05'
+slug: search-trends-of-covid-19
+categories: [Analysis]
+Tags:
+- gtrendsR
+- GGplot
+- Covid-19
+Description: 'Looking at google search trends following the Covid-19 outbreak in Canada'
+---
+
+
+
+<div id="the-setting" class="section level2">
+<h2>The setting</h2>
+<p>It has been about a month since we have really started to feel the impact of Covid-19 in Canada. Outside of the virus itself, the preventive measures (social distancing, closures of schools, etc.), while necessary, have also impacted our daily routines and habits. Google search trends can help provide some insight into how our behaviours are changing, as a google search is often the first step one takes when wanting to purchase an item, learn how to do something, etc.</p>
+</div>
+<div id="importing-the-data" class="section level2">
+<h2>Importing the data</h2>
+<p>I will use the R package <code>gtrendsR</code> in order to obtain google search trend data directly from R. First I install the relevant packages:</p>
+<pre class="r"><code>library(&quot;gtrendsR&quot;) #tool to access google search trend data
+library(&quot;dplyr&quot;) # for dataset manipulation
+library(&quot;ggplot2&quot;) # for plotting
+library(&quot;patchwork&quot;) #for arranging multiple related plots</code></pre>
+<p>I write a function that takes as input <code>keyword_string</code> which is a single or multiple keywords that I want to view the search trends for. I set the date from January 1st 2020 to April 5th 2020. I also limit the geographic region to Canada. I plot a vertical line on March 17th, which is the date many provinces declared a state of emergency, and thus may represent the date where social distancing became a reality for many Canadians.</p>
+<pre class="r"><code>plot_trend&lt;-function(keyword_string){
+data&lt;-gtrends(c(keyword_string), time= &quot;2020-01-01 2020-04-05&quot;, geo = &quot;CA&quot;)
+time_trend&lt;-data$interest_over_time %&gt;%
+  mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,hits),
+         date=as.Date(date),
+         keyword=factor(keyword, levels = keyword_string))
+plot&lt;-ggplot(data=time_trend, aes(x=date, y=as.numeric(hits), colour=keyword)) +
+  geom_smooth(method=&quot;loess&quot;,span=0.4, se=FALSE) +
+  geom_vline(xintercept = as.numeric(as.Date(&quot;2020-03-17&quot;))) +
+  theme_bw() +
+  scale_y_continuous(breaks = NULL) +
+  theme(legend.position = &quot;bottom&quot;,
+        legend.title = element_blank(),
+        legend.text=element_text(size=10),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank())
+return(plot)
+}</code></pre>
+</div>
+<div id="closure-of-non-essential-services" class="section level2">
+<h2>Closure of non-essential services</h2>
+<p>The first thing I want to look at was how the closure of non-essential services may have caused people to do things that they wouldn’t otherwise do. Getting a haircut, going to the gym, ordering a pizza, buying a coffee. These are all things that perhaps we have taken for granted in the pre-Covid-19 era.</p>
+<pre class="r"><code>hair_plot&lt;-plot_trend(keyword_string = c( &quot;barber&quot;,&quot;how to cut hair&quot;))
+food_plot&lt;-plot_trend(keyword_string = c(&quot;italian restaurant&quot;,&quot;how to make pizza&quot;))
+fitness_plot&lt;-plot_trend(keyword_string = c(&quot;goodlife fitness&quot;, &quot;home workout&quot;))
+coffee_plot&lt;-plot_trend(keyword_string = c(&quot;Tim Hortons coffee&quot;,&quot;how to make coffee&quot;))
+
+(hair_plot + food_plot) / (fitness_plot + coffee_plot)</code></pre>
+<p><img src="/posts/Search-trends/2020-03-14-search-trends_files/figure-html/closures-1.png" width="672" /></p>
+<p>Desperate times call for desperate measures. Many are turning to Google to teach them how to cut their hair (a trend that will no doubt grow). On the bright side, people are learning essential skills like how to stay fit at home and how to cook pizza, two opposing but powerful skills to master (though it appears that the motivation for pizza is increasing while the interest in home workouts is waning).</p>
+</div>
+<div id="entertainment" class="section level2">
+<h2>Entertainment</h2>
+<p>With more people staying home, did more people look into streaming content at home? How about the major sports leagues, whose seasons were all put on pause.</p>
+<pre class="r"><code>streaming_plot&lt;-plot_trend(keyword_string = c(&quot;disney +&quot;,&quot;netflix&quot;,&quot;prime video&quot;))
+streaming_plot</code></pre>
+<p><img src="/posts/Search-trends/2020-03-14-search-trends_files/figure-html/entertainment-1.png" width="672" /></p>
+<p>Looks like people defaulted to the most established streaming service, Netflix, while Disney + and Amazon’s prime video saw smaller boosts in search popularity.</p>
+<pre class="r"><code>sports_plot&lt;-plot_trend(keyword_string = c(&quot;nba&quot;,&quot;mlb&quot;,&quot;mls&quot;,&quot;nhl&quot;))
+sports_plot + geom_vline(xintercept = as.numeric(as.Date(&quot;2020-03-12&quot;)), colour=&quot;darkblue&quot;)</code></pre>
+<p><img src="/posts/Search-trends/2020-03-14-search-trends_files/figure-html/sports-1.png" width="672" /></p>
+<p>The NBA and NHL, both approaching the end of their regular seasons showed drastic drops in search interest as they were cancelled on March 12 (the first line highlighted in blue).</p>
+</div>
+<div id="working-from-home" class="section level2">
+<h2>Working from home</h2>
+<p>With the large-scale transition to remote working, I wanted to explore how the interest in working from home tools - both technological and physical - would change. With many schools across Canada facing extended closues, I expected parents to <em>supplement</em> their knowledge with some internet searches as well.</p>
+<pre class="r"><code>teaching_plot&lt;-plot_trend(keyword_string = c(&quot;how to teach math&quot;,&quot;how to teach english&quot;))
+homeoffice_plot&lt;-plot_trend(keyword_string = c(&quot;office chair&quot;, &quot;computer monitor&quot;,&quot;desk&quot;))
+video_plot&lt;-plot_trend(keyword_string = c(&quot;zoom&quot;,&quot;skype&quot;,&quot;webex&quot;))
+communication_plot&lt;-plot_trend(keyword_string = c(&quot;slack&quot;,&quot;discord&quot;,&quot;microsoft teams&quot;))
+
+(teaching_plot + homeoffice_plot) /  (video_plot + communication_plot)</code></pre>
+<p><img src="/posts/Search-trends/2020-03-14-search-trends_files/figure-html/WFH-1.png" width="672" /></p>
+<p>Looks like parents are needing refreshers on their math much more than their english. In terms of home office essentials, people seem to be most interested in getting a new desk as opposed to a new monitor or chair. Zoom seems to be the teleconferencing software of choice, perhaps due to it’s simplicity. Out of the text communication services, Microsoft Teams is seeing the quickest rise in interest.</p>
+</div>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>The introduction of Covid-19 in Canada has introduced significant societal change, and Google searches present an interesting way to gauge the different ways that people are coping with the various public health measures imposed upon them.</p>
+</div>

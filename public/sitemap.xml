@@ -3,42 +3,77 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/categories/analysis/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/covid-19/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/ggplot/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/gtrendsr/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/search-trends/search-trends-of-covid-19/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/gtrendsr/how-to-plot-google-trends-in-r/</loc>
+    <lastmod>2020-04-04T12:19:11-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/methods/</loc>
+    <lastmod>2020-04-04T12:19:11-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/posts/specialcharacters_ggplotlabels/adding-special-characters-ggplot-labels/</loc>
     <lastmod>2020-03-30T18:04:51-04:00</lastmod>
   </url>
   
   <url>
-    <loc>/posts/</loc>
-    <lastmod>2020-03-30T18:04:51-04:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/data-visualization/</loc>
-    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/tags/gganimate/</loc>
-    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/ridgeplot/</loc>
-    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/covid19-search-trends/search-trends-of-covid-19/</loc>
-    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-03-14T00:00:00+00:00</lastmod>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/posts/weather/ottawa-winters/</loc>
+    <lastmod>2019-03-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/ridgeplot/</loc>
     <lastmod>2019-03-27T00:00:00+00:00</lastmod>
   </url>
   
@@ -50,10 +85,6 @@
   <url>
     <loc>/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
   </url>
   
   <url>

@@ -1,0 +1,22 @@
+---
+title: How to plot google trends in R
+author: Michael Elten
+date: '2020-04-04'
+slug: how-to-plot-google-trends-in-r
+categories: []
+tags:
+  - methods
+lastmod: '2020-04-04T12:19:11-04:00'
+layout: post
+type: post
+highlight: no
+---
+
+<!-- Things to consider -->
+<!-- different time periods, different regions, comparing keywords, combining keywords, adding vlines, smoothing -->
+
+
+```{r}
+
+```
+

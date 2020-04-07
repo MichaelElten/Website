@@ -6,10 +6,28 @@
     <description>Recent content in Posts on Casual Inferences</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 30 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Search trends during Covid-19</title>
+      <link>/posts/search-trends/search-trends-of-covid-19/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/search-trends/search-trends-of-covid-19/</guid>
+      <description>The settingIt has been about a month since we have really started to feel the impact of Covid-19 in Canada. Outside of the virus itself, the preventive measures (social distancing, closures of schools, etc.), while necessary, have also impacted our daily routines and habits. Google search trends can help provide some insight into how our behaviours are changing, as a google search is often the first step one takes when wanting to purchase an item, learn how to do something, etc.</description>
+    </item>
+    
+    <item>
+      <title>How to plot google trends in R</title>
+      <link>/posts/gtrendsr/how-to-plot-google-trends-in-r/</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/gtrendsr/how-to-plot-google-trends-in-r/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Adding special characters in GGplot labels</title>
@@ -19,17 +37,6 @@
       <guid>/posts/specialcharacters_ggplotlabels/adding-special-characters-ggplot-labels/</guid>
       <description>I find that I will often need to add special characters such as “µ” in my figure labels. This is an example of one solution I found to add special characters into them. The solution? Unicode characters.
 Unicode is a standardized coding scheme for characters of all languages. As of March 2020, there are close to 150,000 different characters with a corresponding unicode designation. To call a unicode symbol in R, you can simply type the corresponding sequence in a quoted string such as “\u03b1” which will print α.</description>
-    </item>
-    
-    <item>
-      <title>Search trends of Covid-19</title>
-      <link>/posts/covid19-search-trends/search-trends-of-covid-19/</link>
-      <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/covid19-search-trends/search-trends-of-covid-19/</guid>
-      <description>This is a post in progress!
-Importing the dataFor this, I will use the R package “gtrendsR” for the first time.
-library(&amp;quot;dplyr&amp;quot;)library(&amp;quot;readr&amp;quot;)library(&amp;quot;gtrendsR&amp;quot;)library(&amp;quot;googlesheets4&amp;quot;)covid_data %&amp;gt;%filter(provincial_case_id==100) %&amp;gt;%select(province, date_report)## # A tibble: 4 x 2## province date_report## &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; ## 1 Ontario 14-03-2020 ## 2 BC 16-03-2020 ## 3 Alberta 18-03-2020 ## 4 Quebec 19-03-2020So Ontario had its 100th case on March 14th, BC on March 16th, Alberta on March 18th and Quebec on March 19th.</description>
     </item>
     
     <item>

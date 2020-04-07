@@ -23,25 +23,51 @@ For this, I will use the R package "gtrendsR" for the first time.
 library("dplyr")
 library("readr")
 library("gtrendsR")
-library("googlesheets4")
+library("ggplot2")
+library("patchwork")
 ```
 
 
-```{r importing data, echo=FALSE, warning=FALSE, message=FALSE}
-covid_data<-read_csv("Covid19_Canada_March26.csv", skip=3)
+```{r trend}
+plot_trend<-function(keyword_string){
+data<-gtrends(c(keyword_string), time= "2020-01-01 2020-04-03", geo = "CA")
+time_trend<-data$interest_over_time %>%
+  mutate(hits=ifelse(hits=="<1",0.5,hits),
+         date=as.Date(date))
+plot<-ggplot(data=time_trend, aes(x=date, y=as.numeric(hits), colour=keyword)) +
+  geom_smooth(method="loess",span=0.4, se=FALSE) +
+  theme(legend.position = "bottom")
+return(plot)
+}
+
+#personal care
+hair_plot<-plot_trend(keyword_string = c("how to cut hair", "barber"))
+food_plot<-plot_trend(keyword_string = c("restaurant", "uber eats","food delivery"))
+fitness_plot<-plot_trend(keyword_string = c("dumbells", "home gym","goodlife fitness","movati"))
+
+#entertainment / purchasing
+hoarding_plot<-plot_trend(keyword_string = "toilet paper")
+videogames_plot<-plot_trend(keyword_string = "video games")
+baking_plot<-plot_trend(keyword_string = c("how to bake bread","how to bake cookies","how to bake cake"))
+streaming_plot<-plot_trend(keyword_string = c("disney +","netflix","hulu","prime video"))
+sports_plot<-plot_trend(keyword_string = c("nba","mlb","mls","nhl"))
+
+
+#parental activities
+teaching_plot<-plot_trend(keyword_string = "long division")
+
+# working from home
+video_plot<-plot_trend(keyword_string = c("zoom","skype","webex"))
+communication_plot<-plot_trend(keyword_string = c("slack","discord","microsoft teams"))
+homeoffice_plot<-plot_trend(keyword_string = "office chair")
+
+#Covid-19 related stuff
+
 ```
 
-```{r getting dates}
-covid_data %>%
-  filter(provincial_case_id==100) %>%
-  select(province, date_report)
+
+```{r}
+## Combining plots: patchwork, or pubr packages...
+video_plot
 ```
-So Ontario had its 100th case on March 14th, BC on March 16th, Alberta on March 18th and Quebec on March 19th.
-
-```{r example trend}
-dp<-gtrends(c("corona virus"), time="today 1-m", geo = c("CA-ON","CA-BC","CA-QC"))
-plot(dp)
-```
-
-
 
