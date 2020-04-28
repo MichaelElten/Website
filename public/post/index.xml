@@ -1,55 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on Casual Inferences</title>
-    <link>/post/</link>
-    <description>Recent content in Posts on Casual Inferences</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Sat, 04 Apr 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>How to plot google trends in R</title>
-      <link>/post/how-to-plot-google-trends-in-r/</link>
-      <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/post/how-to-plot-google-trends-in-r/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Adding special characters in GGplot labels</title>
-      <link>/posts/specialcharacters_ggplotlabels/adding-special-characters-ggplot-labels/</link>
-      <pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/specialcharacters_ggplotlabels/adding-special-characters-ggplot-labels/</guid>
-      <description>I find that I will often need to add special characters such as “µ” in my figure labels. This is an example of one solution I found to add special characters into them. The solution? Unicode characters.
-Unicode is a standardized coding scheme for characters of all languages. As of March 2020, there are close to 150,000 different characters with a corresponding unicode designation. To call a unicode symbol in R, you can simply type the corresponding sequence in a quoted string such as “\u03b1” which will print α.</description>
-    </item>
-    
-    <item>
-      <title>Search trends of Covid-19</title>
-      <link>/posts/covid19-search-trends/search-trends-of-covid-19/</link>
-      <pubDate>Sat, 14 Mar 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/covid19-search-trends/search-trends-of-covid-19/</guid>
-      <description>This is a post in progress!
-Importing the dataFor this, I will use the R package “gtrendsR” for the first time.
-library(&amp;quot;dplyr&amp;quot;)library(&amp;quot;readr&amp;quot;)library(&amp;quot;gtrendsR&amp;quot;)library(&amp;quot;ggplot2&amp;quot;)library(&amp;quot;patchwork&amp;quot;)plot_trend&amp;lt;-function(keyword_string){data&amp;lt;-gtrends(c(keyword_string), time= &amp;quot;2020-01-01 2020-04-03&amp;quot;, geo = &amp;quot;CA&amp;quot;)time_trend&amp;lt;-data$interest_over_time %&amp;gt;%mutate(hits=ifelse(hits==&amp;quot;&amp;lt;1&amp;quot;,0.5,hits),date=as.Date(date))plot&amp;lt;-ggplot(data=time_trend, aes(x=date, y=as.numeric(hits), colour=keyword)) +geom_smooth(method=&amp;quot;loess&amp;quot;,span=0.4, se=FALSE) +theme(legend.position = &amp;quot;bottom&amp;quot;)return(plot)}#personal carehair_plot&amp;lt;-plot_trend(keyword_string = c(&amp;quot;how to cut hair&amp;quot;, &amp;quot;barber&amp;quot;))food_plot&amp;lt;-plot_trend(keyword_string = c(&amp;quot;restaurant&amp;quot;, &amp;quot;uber eats&amp;quot;,&amp;quot;food delivery&amp;quot;))fitness_plot&amp;lt;-plot_trend(keyword_string = c(&amp;quot;dumbells&amp;quot;, &amp;quot;home gym&amp;quot;,&amp;quot;goodlife fitness&amp;quot;,&amp;quot;movati&amp;quot;))#entertainment / purchasinghoarding_plot&amp;lt;-plot_trend(keyword_string = &amp;quot;toilet paper&amp;quot;)videogames_plot&amp;lt;-plot_trend(keyword_string = &amp;quot;video games&amp;quot;)baking_plot&amp;lt;-plot_trend(keyword_string = c(&amp;quot;how to bake bread&amp;quot;,&amp;quot;how to bake cookies&amp;quot;,&amp;quot;how to bake cake&amp;quot;))streaming_plot&amp;lt;-plot_trend(keyword_string = c(&amp;quot;disney +&amp;quot;,&amp;quot;netflix&amp;quot;,&amp;quot;hulu&amp;quot;,&amp;quot;prime video&amp;quot;))sports_plot&amp;lt;-plot_trend(keyword_string = c(&amp;quot;nba&amp;quot;,&amp;quot;mlb&amp;quot;,&amp;quot;mls&amp;quot;,&amp;quot;nhl&amp;quot;))#parental activitiesteaching_plot&amp;lt;-plot_trend(keyword_string = &amp;quot;long division&amp;quot;)# working from homevideo_plot&amp;lt;-plot_trend(keyword_string = c(&amp;quot;zoom&amp;quot;,&amp;quot;skype&amp;quot;,&amp;quot;webex&amp;quot;))communication_plot&amp;lt;-plot_trend(keyword_string = c(&amp;quot;slack&amp;quot;,&amp;quot;discord&amp;quot;,&amp;quot;microsoft teams&amp;quot;))homeoffice_plot&amp;lt;-plot_trend(keyword_string = &amp;quot;office chair&amp;quot;)#Covid-19 related stuff## Combining plots: patchwork, or pubr packages.</description>
-    </item>
-    
-    <item>
-      <title>Ottawa Winters -2019</title>
-      <link>/posts/weather/ottawa-winters/</link>
-      <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/weather/ottawa-winters/</guid>
-      <description>The settingIt was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.
-Luckily for me, there is an excellent publically available data source for historical Canadian weather data, provided by Environment Canada.</description>
-    </item>
-    
-  </channel>
-</rss>

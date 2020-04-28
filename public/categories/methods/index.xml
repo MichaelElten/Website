@@ -6,7 +6,7 @@
     <description>Recent content in Methods on Casual Inferences</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 04 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/methods/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,10 +14,12 @@
     <item>
       <title>How to plot google trends in R</title>
       <link>/posts/gtrendsr/how-to-plot-google-trends-in-r/</link>
-      <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/gtrendsr/how-to-plot-google-trends-in-r/</guid>
-      <description></description>
+      <description>This post will go over some of the functionality of the gtrendsR package and showing a quick workflow of how to go from keyword to plot.
+library(dplyr)library(gtrendsR)library(knitr)library(ggplot2)library(patchwork)The basicsThe function gtrendsR::gtrends() is how you are able to access the google trends data. There are three elements needed to feed into this function:
+the word or phrase of interest: keywordthe region of interest: geothe time period of interest: timeKeywordJust enter the search term of interest in quotes.</description>
     </item>
     
     <item>

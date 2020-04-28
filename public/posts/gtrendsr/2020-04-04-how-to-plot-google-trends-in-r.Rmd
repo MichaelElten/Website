@@ -1,24 +1,230 @@
 ---
 title: How to plot google trends in R
 author: Michael Elten
-date: '2020-04-04'
+date: '2020-04-19'
 slug: how-to-plot-google-trends-in-r
 categories: [Methods]
-tags:
+Tags:
   - gtrendsR
-lastmod: '2020-04-04T12:19:11-04:00'
-layout: post
-type: post
-highlight: no
-
-draft: true
+Description: 'How to plot google search trends in R'
 ---
 
-<!-- Things to consider -->
-<!-- different time periods, different regions, comparing keywords, combining keywords, adding vlines, smoothing, case sensitivity -->
+
+This post will go over some of the functionality of the gtrendsR package and showing a quick workflow of how to go from keyword to plot.
+
+```{r, message=FALSE}
+library(dplyr)
+library(gtrendsR)
+library(knitr)
+library(ggplot2)
+library(patchwork)
+```
+
+
+## The basics
+
+The function `gtrendsR::gtrends()` is how you are able to access the google trends data. There are three elements needed to feed into this function:
+
+- the word or phrase of interest: `keyword`
+- the region of interest: `geo`
+- the time period of interest: `time`
+
+
+### Keyword
+
+Just enter the search term of interest in quotes. To search multiple terms, add as a character vector like so: `keyword=c("term 1","term 2")`.
+
+### Region of interest
+
+Enter the code corresponding to the region of interest. For example, to look at Canada, you would input `geo="CA"`. To search the province of Ontario within Canada, you would input `geo="CA-ON"`. You can compare multiple regions in a similar way to comparing multiple keywords: `geo=c("CA-ON","CA-BC")`.
+
+Heres a list of the codes for Canada and it's provinces/territories. For the full list you can run the function `data(countries)` after loading the gtrendsR package.
+
+```{r, echo=FALSE}
+data(countries) 
+
+## Post to look at cities...: https://stackoverflow.com/questions/50318748/gtrendsr-geo-msa-area-code
+
+provinces<-countries %>%
+  filter(country_code=="CA") %>%
+  distinct(sub_code, .keep_all = TRUE) %>%
+  mutate(sub_code=ifelse(name=="CANADA","CA",as.character(sub_code)))%>%
+  rename(`GEO code`=sub_code,
+         Name=name)%>%
+  select(Name, `GEO code`) %>%
+  head(14)
+
+kable(provinces)
+```
+
+### Time
+
+Here is where you pick the time period of interest. 
+
+```{r, echo=FALSE}
+
+table2<-data.frame(Code=c("now 1-H", 
+                       "now 4-H",
+                       "now 1-d",
+                       "now 7-d",
+                       "today 1-m",
+                       "today 3-m",
+                       "today 12-m",
+                       "today+5-y",
+                       "all",
+                       "Y-m-d Y-m-d"),
+                   `Time range`=c("Last hour",
+                       "Last four hours",
+                       "Last day",
+                       "Last seven days",
+                       "Past 30 days",
+                       "Past 90 days",
+                       "Past 12 months",
+                       "Last five years (default)",
+                       "Since the beginning of Google Trends (2004)",
+                       'Time span between two dates (ex.: "2010-01-01 2010-04-03")'))
+
+kable(table2)
+
+```
+
+
+### Example
+
+Heres an example looking at comparing the search popularity of "skiing" and "swimming" across Canada in the past year.
+
+```{r}
+
+search1<-gtrends(c("skiing","swimming"), time= "today 12-m", geo = "CA")
+plot(search1)
+
+```
+
+Note that the y axis does not show the raw volume of searches, but just shows relative popularity with the max value scaled to 100. 
+
+
+## Advanced settings
+
+### Manually plotting
+
+For those that want more control over the plotting, you can extract the `$interest_over_time` object of the returned query to get a data.frame that has the number of hits per year. Note that for some queries where you are comparing two keywords with a large difference in search interest, you may get some days where the value for hits is "<1". So I convert this to 0.5 to be able to plot this. I also use the function `as.Date()` to plot the dates correctly.
+
+See an example looking at "extreme skiing" which is a bit more niche than "swimming":
+
+```{r, warning=FALSE}
+search2<-gtrends(keyword = c("extreme skiing","swimming"), time= "today 12-m", geo = "CA")
+time_trend2<-search2$interest_over_time %>%
+  dplyr::mutate(hits=ifelse(hits=="<1",0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+ggplot(time_trend2, aes(x=date, y=hits, colour=keyword)) +
+  geom_line()
+```
+
+
+#### Combining keywords
+From what I have read, you can't combine keywords using gtrendsR. So for instance, "swimming OR skiing" would only return that specific keyword, and not the sum of searches of "skiing" and "swimming":
+
+```{r}
+
+search3<-gtrends(c("skiing OR swimming","skiing","swimming"), time= "today 12-m", geo = "CA")
+
+time_trend3<-search3$interest_over_time %>%
+  dplyr::mutate(hits=ifelse(hits=="<1",0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+head(time_trend3)
+
+ggplot(time_trend3, aes(x=date, y=hits, colour=keyword)) +
+  geom_line()
+
+```
+
+#### Adding vertical lines
+
+You may often want to add a vertical line to give some context to the plot. For instance, the start of summer (June 21) and winter (December 21st) might be good dates to mark. 
 
 
 ```{r}
 
+search4<-gtrends(c("skiing OR swimming","skiing","swimming"), time= "today 12-m", geo = "CA")
+
+time_trend4<-search4$interest_over_time %>%
+  dplyr::mutate(hits=ifelse(hits=="<1",0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+
+ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+  geom_line() +
+  geom_vline(xintercept=as.Date("2019-06-21"))
+
+```
+
+#### Smoothing
+
+When you are more interested in the long term trends, you can use `ggplot2::geom_smooth()` to hide some of the short term variation. 
+
+```{r, message=FALSE}
+
+search5<-gtrends(c("skiing","swimming"), time= "today 12-m", geo = "CA")
+
+time_trend5<-search5$interest_over_time %>%
+  dplyr::mutate(hits=ifelse(hits=="<1",0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+plot_nosmooth<-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+  geom_line() + 
+  labs(title="No Smoothing") + 
+  theme(legend.position = "none")
+
+plot_smooth_20<-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+    geom_smooth(method="loess",span=0.2, se=FALSE) +
+  labs(title="smoothing factor = 0.2")+ 
+  theme(legend.position = "none")
+
+
+plot_smooth_40<-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+    geom_smooth(method="loess",span=0.4, se=FALSE) +
+  labs(title="smoothing factor = 0.4")+ 
+  theme(legend.position = "none")
+
+
+plot_smooth_60<-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+    geom_smooth(method="loess",span=0.6, se=FALSE) +
+  labs(title="smoothing factor = 0.6")+ 
+  theme(legend.position = "none")
+
+
+  
+(plot_nosmooth + plot_smooth_20) / (plot_smooth_40 + plot_smooth_60)  
+```
+
+
+#### Writing a function
+
+We can take these features and write a function to be able to quickly generate plots in the same style. 
+
+```{r}
+plot_trend<-function(keyword_string){
+data<-gtrends(c(keyword_string), time= "2020-01-01 2020-04-05", geo = "CA")
+time_trend<-data$interest_over_time %>%
+  mutate(hits=ifelse(hits=="<1",0.5,hits),
+         date=as.Date(date),
+         keyword=factor(keyword, levels = keyword_string))
+plot<-ggplot(data=time_trend, aes(x=date, y=as.numeric(hits), colour=keyword)) +
+  geom_smooth(method="loess",span=0.4, se=FALSE) +
+  geom_vline(xintercept = as.numeric(as.Date("2020-03-17"))) +
+  theme_bw() +
+  scale_y_continuous(breaks = NULL) +
+  theme(legend.position = "bottom",
+        legend.title = element_blank(),
+        legend.text=element_text(size=10),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank())
+return(plot)
+}
+
+plot1<-plot_trend(keyword_string = c("keyword1","keyword2"))
+plot1
 ```
 

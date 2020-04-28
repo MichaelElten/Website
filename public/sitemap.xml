@@ -3,12 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/categories/analysis/</loc>
-    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+    <loc>/posts/</loc>
+    <lastmod>2020-04-21T20:36:40-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/visualizing-covid-19/</loc>
+    <lastmod>2020-04-21T20:36:40-04:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
+    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/gtrendsr/</loc>
+    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/gtrendsr/how-to-plot-google-trends-in-r/</loc>
+    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/methods/</loc>
+    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/analysis/</loc>
     <lastmod>2020-04-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -23,33 +53,8 @@
   </url>
   
   <url>
-    <loc>/tags/gtrendsr/</loc>
-    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/</loc>
-    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/posts/search-trends/search-trends-of-covid-19/</loc>
     <lastmod>2020-04-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/gtrendsr/how-to-plot-google-trends-in-r/</loc>
-    <lastmod>2020-04-04T12:19:11-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/methods/</loc>
-    <lastmod>2020-04-04T12:19:11-04:00</lastmod>
   </url>
   
   <url>

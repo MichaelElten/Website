@@ -234,6 +234,6 @@ dev.off()
 
 ```
 
-This figure doesn't preview well in R, so I export it to png with a specified height and weight. Here is the plot: 
+This figure doesn't preview well in R, so I export it to png with a specified height and width. Here is the plot: 
 
 ![](/img/canalplot.png)
