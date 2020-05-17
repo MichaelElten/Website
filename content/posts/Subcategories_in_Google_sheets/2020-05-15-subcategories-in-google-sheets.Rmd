@@ -10,6 +10,7 @@ tags:
 lastmod: '2020-05-15T20:01:25-04:00'
 layout: posts
 type: posts
+Description: 'How to get category and subcategory drop-down lists in Google Sheets'
 ---
 
 
