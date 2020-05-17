@@ -1,0 +1,92 @@
+---
+title: Subcategories in Google Sheets
+author: Michael Elten
+date: '2020-05-15'
+slug: subcategories-in-google-sheets
+categories:
+  - Methods
+tags:
+  - Google-sheets
+lastmod: '2020-05-15T20:01:25-04:00'
+layout: posts
+type: posts
+---
+
+
+![](/posts/Subcategories_in_Google_sheets/gif1_Subcategory_demo.gif)
+
+
+A problem I came across recently was how to make one drop down list based on the contents of another drop down list in order to specify categories and subcategories.
+
+I found two ways of doing this - Method 1 is a simpler technique for when you only need one or two of these in a sheet, and Method 2 is for when you need many of these category-subcategory drop down lists as in a larger table or for data entry.
+
+### Setting up
+
+For both methods, you will need to create a column with all of the primary categories. You will then save this as a ```named range```, with the title "Categories" or whatever makes sense to you. Something to keep in mind here is that for each of the category names, we can't have any spaces, special characters, lead with a number or "TRUE" or "FALSE". If you want to have a primary category that has two or more words, you can use some tricks like inserting an underscore between the two words.
+
+Next, for each parent category, make a new column and list all of the subcategories that belong to it. Once you have finished, you now need to create a new ```named range``` for each of these parent categories, using the primary category name as the title. This is why we needed to put restrictions on the primary category names.
+
+![](/posts/Subcategories_in_Google_sheets/pic1_named_ranges.png)
+
+Note - the named ranges don't need to be on the same sheet as your drop-down lists, and I usually keep a separate sheet just for containing all the named ranges in a workbook.
+
+Once this is done, we are all set up and can proceed with either Method 1 or Method 2!
+
+### Method 1 - using INDIRECT()
+
+This method is for when you only need to have only a few of these category-subcategory dropdown lists on the sheet.
+
+In one cell, you create a dropdown for the primary category as you normally would (Data -> Data Validation -> List from a range, then enter the name of the named range you created, ie. "Categories")
+
+In order to generate a list of the possible subcategory options, we select a new column, and use the ```INDIRECT()``` function with the cell containing the primary category as input. In my case, it would look like ```INDIRECT(A2)```. This will create a list of all the possible subcategories of our selected primary category. 
+
+![](/posts/Subcategories_in_Google_sheets/pic2_indirect.png)
+
+Finally, we select the cell next to our primary category, and use data-validation to select the column where we plugged in our ```INDIRECT()``` formula. That's it!
+
+![](/posts/Subcategories_in_Google_sheets/pic3_data_validation.png)
+
+Note - you may notice I like to select a larger area than I need for my named ranges and data validation areas. This makes it so that if I later decide to add a new category or subcategory. To do so is easy, just add a new item in the main categories named range, and then add a new named range with this entry as it's title with the subcategories as items in this new named range.
+
+
+### Method 2 - Using Google Scripts
+
+You can see that if you wanted to have X many rows of category-subcategory (like you might want in a data entry form), that you would also need X many columns with ```INDIRECT()```. This could become a handful. In these scenarios, I prefer to use a solution with Google Scripts. Here is how to access the Google Scripts editor:
+
+![](/posts/Subcategories_in_Google_sheets/gif2_Google_Scripts.gif)
+
+First, here are the scripts I used:
+
+```
+function onEdit() {
+var activesheet = SpreadsheetApp.getActiveSheet()
+var Cell = SpreadsheetApp.getActiveSheet().getActiveCell();
+var Column = Cell.getColumn();
+
+if (activesheet.getName()=='Method 2'){
+if (Column == 1 && SpreadsheetApp.getActiveSheet()){
+  var Target = SpreadsheetApp.getActiveSheet().getRange(Cell.getRow(), Column + 1);
+  var Options = SpreadsheetApp.getActiveSpreadsheet().getRangeByName(Cell.getValue());
+  SubcategoryDropdown(Target, Options);
+}
+}
+}
+
+function SubcategoryDropdown(Target, Options){
+var rule = SpreadsheetApp.newDataValidation().requireValueInRange(Options, true).build();
+
+Target.setDataValidation(rule);
+}
+```
+Essentially, what this does is applies a function on every edit that will check if 1) the sheet is "Method 2", and 2) is in column 1. If these conditions are satisfied, it designates a ```Target``` cell (where you want the subcategory to be), and gets a list of ```Options``` based on the named range in the cell in column 1. The second script then applies the data validation based on the ```Target``` and the ```Options```
+
+You will probably want to change the sheetname from "Methods 2" to the name of the sheet in your workbook. If you want to have the Category in a different column, you would just substitute the column number in ```Column == 1```, similarly you can change where the subcategory column will be by changing the value in ```  var Target = SpreadsheetApp.getActiveSheet().getRange(Cell.getRow(), Column + 1);```. 
+
+![](/posts/Subcategories_in_Google_sheets/pic4_Method2.png)
+
+And it's that easy! Note that it will sometimes take a second for the subcategories to show up using this method.
+
+
+Here is a link to the Google-Sheets file used in this demo: https://docs.google.com/spreadsheets/d/16nwF-dCbDUb8iQT3fGYdxRvmMCrMeO-dYcekWKA5ZKU/edit?usp=sharing
+
+Just go to File -> Make a Copy in order to get access to the formulas used.

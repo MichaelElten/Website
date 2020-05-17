@@ -6,10 +6,20 @@
     <description>Recent content in Methods on Casual Inferences</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 19 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 15 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/categories/methods/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Subcategories in Google Sheets</title>
+      <link>/posts/subcategories_in_google_sheets/subcategories-in-google-sheets/</link>
+      <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/subcategories_in_google_sheets/subcategories-in-google-sheets/</guid>
+      <description>When building my extensive google sheets budget program (insert link here!) one thing I needed to figure out was how to make one drop down list based on the contents of another drop down list in order to specify categories and subcategories.
+I found two ways of doing this - Method 1 is a simpler technique for when you only need one or two of these in a sheet, and Method 2 is for when you need many of these category-subcategory drop down lists as in a larger table or for data entry.</description>
+    </item>
     
     <item>
       <title>How to plot google trends in R</title>
