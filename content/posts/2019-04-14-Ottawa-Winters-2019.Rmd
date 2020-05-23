@@ -39,7 +39,7 @@ Now to import the data - I chose to download weather data from January 1st 2015 
 *Note: the data starts at row 25 so I use the `skip=25` option. The date is recorded as "dd/mm/yyyy" so `parse_date` function is used so that R can recognize it as a date variable.
 
 ```{r import, results='hide', warning=FALSE, message=FALSE}
-Data<-read_csv(here::here("content/posts/Ottawa-Winters-2019/data/WeatherData_YOW.csv"), col_names=TRUE, skip=25) %>%
+Data<-read_csv(here::here("static","posts","Ottawa-Winters-2019","WeatherData_YOW.csv"), col_names=TRUE, skip=25) %>%
   mutate(`Date/Time`=parse_date(`Date/Time`, "%d/%m/%Y"))
 
 ```
@@ -187,7 +187,7 @@ The table that I wanted was small enough that I found it easiest to just copy an
 
 ```{r ImportCanal, warning=FALSE, message=FALSE}
 
-canal_data <- read_csv(here::here("content/posts/Ottawa-Winters-2019/data/canal_dates.csv"))
+canal_data <- read_csv(here::here("static","posts","Ottawa-Winters-2019","canal_dates.csv"))
 
  canal_data<- canal_data %>%
   mutate(Opened=parse_date(canal_data$Opened, "%d/%m/%Y"),

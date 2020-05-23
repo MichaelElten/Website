@@ -237,7 +237,7 @@ library(&quot;gifski&quot;) #animation of plots
 library(&quot;knitr&quot;) #creation of tables</code></pre>
 <p>Now to import the data - I chose to download weather data from January 1st 2015 to March 18 2019. You can access the unformatted CSV here.</p>
 <p>*Note: the data starts at row 25 so I use the <code>skip=25</code> option. The date is recorded as “dd/mm/yyyy” so <code>parse_date</code> function is used so that R can recognize it as a date variable.</p>
-<pre class="r"><code>Data&lt;-read_csv(here::here(&quot;content/posts/Ottawa-Winters-2019/data/WeatherData_YOW.csv&quot;), col_names=TRUE, skip=25) %&gt;%
+<pre class="r"><code>Data&lt;-read_csv(here::here(&quot;static&quot;,&quot;posts&quot;,&quot;Ottawa-Winters-2019&quot;,&quot;WeatherData_YOW.csv&quot;), col_names=TRUE, skip=25) %&gt;%
   mutate(`Date/Time`=parse_date(`Date/Time`, &quot;%d/%m/%Y&quot;))</code></pre>
 <p>Here is a sample of what the data looked like:</p>
 <table>
@@ -422,7 +422,7 @@ animate(temp_animate, renderer = gifski_renderer(loop = F))</code></pre>
 <p>To those of you who don’t know, the Rideau Canal in Ottawa doubles as the World’s largest skateway in the winter, weather permitting. Skating the 7.8 kilometers is usually one of the highlights of my winter here. The canal has been open for 49 seasons, so I decided to visualize the season lengths for each winter that it has been open.</p>
 <p>First I need to find a suitable and credible data source for canal seasons. The best available records was from <a href="https://en.wikipedia.org/wiki/Rideau_Canal#Skateway">Wikipedia</a>. I decided to plot the length of the each canal skating season (from day of official opening to close). It is important to note that this does not capture days where the conditions caused the canal to be closed to skaters during a season. For example, in Winter 2012, the season lasted 38 days, though there were only 26 skating days that winter.</p>
 <p>The table that I wanted was small enough that I found it easiest to just copy and paste it into excel and save the data as a CSV, here.</p>
-<pre class="r"><code>canal_data &lt;- read_csv(here::here(&quot;content/posts/Ottawa-Winters-2019/data/canal_dates.csv&quot;))
+<pre class="r"><code>canal_data &lt;- read_csv(here::here(&quot;static&quot;,&quot;posts&quot;,&quot;Ottawa-Winters-2019&quot;,&quot;canal_dates.csv&quot;))
 
  canal_data&lt;- canal_data %&gt;%
   mutate(Opened=parse_date(canal_data$Opened, &quot;%d/%m/%Y&quot;),
