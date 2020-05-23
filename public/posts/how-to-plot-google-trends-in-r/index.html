@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    
+
+
+    <head>
+    <link href="https://gmpg.org/xfn/11" rel="profile">
+    <meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Cache-Control" content="public" />
+<!-- Enable responsiveness on mobile devices -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="generator" content="Hugo 0.68.3" />
+
+    
+    
+    
+
+<title>How to plot google trends in R • Casual Inferences</title>
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to plot google trends in R"/>
+<meta name="twitter:description" content="How to plot google search trends in R"/>
+
+<meta property="og:title" content="How to plot google trends in R" />
+<meta property="og:description" content="How to plot google search trends in R" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/posts/how-to-plot-google-trends-in-r/" />
+<meta property="article:published_time" content="2020-04-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-19T00:00:00+00:00" /><meta property="og:site_name" content="Title" />
+
+
+    
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/scss/hyde-hyde.1477b6491d9caa7632bca37c4e01b720435f018834b3835218360fc1bac79657.css" integrity="sha256-FHe2SR2cqnYyvKN8TgG3IENfAYg0s4NSGDYPwbrHllc=">
+
+
+<link rel="stylesheet" href="/scss/print.2744dcbf8a0b2e74f8a50e4b34e5f441be7cf93cc7de27029121c6a09f9e77bc.css" integrity="sha256-J0Tcv4oLLnT4pQ5LNOX0Qb58&#43;TzH3icCkSHGoJ&#43;ed7w=" media="print">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="/favicon.png">
+    
+    
+
+</head>
+
+
+    <body class=" ">
+    
+<div class="sidebar">
+  <div class="container ">
+    <div class="sidebar-about">
+      <span class="site__title">
+        <a href="/">Casual Inferences</a>
+      </span>
+      
+        
+        
+        
+        <div class="author-image">
+          <img src="/img/Michael_BW.jpg" alt="Author Image" class="img--circle img--headshot element--center">
+        </div>
+        
+      
+      
+      <p class="site__description">
+         A WIP blog by ME 
+      </p>
+    </div>
+    <div class="collapsible-menu">
+      <input type="checkbox" id="menuToggle">
+      <label for="menuToggle">Casual Inferences</label>
+      <div class="menu-content">
+        <div>
+	<ul class="sidebar-nav">
+		 
+		 
+			 
+				<li>
+					<a href="/posts/">
+						<span>Posts</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/portfolio/">
+						<span>Portfolio</span>
+					</a>
+				</li>
+			 
+		 
+			 
+				<li>
+					<a href="/about/">
+						<span>About</span>
+					</a>
+				</li>
+			 
+		
+	</ul>
+</div>
+
+        <section class="social">
+	
+	<a href="https://twitter.com/MichaelElten" rel="me"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	<a href="https://github.com/MichaelElten" rel="me"><i class="fab fa-github fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	<a href="https://linkedin.com/in/michael-elten-496115118/" rel="me"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<a href="mailto:elten.michael@gmail.com" rel="me"><i class="fas fa-at fa-lg" aria-hidden="true"></i></a>
+	
+</section>
+
+      </div>
+    </div>
+    
+<div class="copyright">
+  &copy; 2019 - 2020 Michael Elten
+  
+    <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>
+  
+</div>
+
+
+
+  </div>
+</div>
+
+        <div class="content container">
+            
+    
+<article>
+  <header>
+    <h1>How to plot google trends in R</h1>
+    
+    
+<div class="post__meta">
+    
+    
+      <i class="fas fa-calendar-alt"></i> Apr 19, 2020
+    
+    
+    
+      
+      
+          in
+          
+          
+              <a class="badge badge-category" href="/categories/methods">METHODS</a>
+              
+          
+      
+    
+    
+    
+      
+      
+          <br/>
+           <i class="fas fa-tags"></i>
+          
+          <a class="badge badge-tag" href="/tags/gtrendsr">gtrendsr</a>
+          
+      
+    
+    
+    <br/>
+    <i class="fas fa-clock"></i> 5 min read
+</div>
+
+
+  </header>
+  
+  
+  <div class="post">
+    
+
+
+<p>This post will go over some of the functionality of the gtrendsR package and showing a quick workflow of how to go from keyword to plot.</p>
+<pre class="r"><code>library(dplyr)
+library(magrittr)
+library(gtrendsR)
+library(knitr)
+library(ggplot2)
+library(patchwork)</code></pre>
+<div id="the-basics" class="section level2">
+<h2>The basics</h2>
+<p>The function <code>gtrendsR::gtrends()</code> is how you are able to access the google trends data. There are three elements needed to feed into this function:</p>
+<ul>
+<li>the word or phrase of interest: <code>keyword</code></li>
+<li>the region of interest: <code>geo</code></li>
+<li>the time period of interest: <code>time</code></li>
+</ul>
+<div id="keyword" class="section level3">
+<h3>Keyword</h3>
+<p>Just enter the search term of interest in quotes. To search multiple terms, add as a character vector like so: <code>keyword=c("term 1","term 2")</code>.</p>
+</div>
+<div id="region-of-interest" class="section level3">
+<h3>Region of interest</h3>
+<p>Enter the code corresponding to the region of interest. For example, to look at Canada, you would input <code>geo="CA"</code>. To search the province of Ontario within Canada, you would input <code>geo="CA-ON"</code>. You can compare multiple regions in a similar way to comparing multiple keywords: <code>geo=c("CA-ON","CA-BC")</code>.</p>
+<p>Heres a list of the codes for Canada and it’s provinces/territories. For the full list you can run the function <code>data(countries)</code> after loading the gtrendsR package.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">GEO code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CANADA</td>
+<td align="left">CA</td>
+</tr>
+<tr class="even">
+<td align="left">ALBERTA</td>
+<td align="left">CA-AB</td>
+</tr>
+<tr class="odd">
+<td align="left">BRITISH COLUMBIA (COLOMBIE-BRITANNIQUE)</td>
+<td align="left">CA-BC</td>
+</tr>
+<tr class="even">
+<td align="left">MANITOBA</td>
+<td align="left">CA-MB</td>
+</tr>
+<tr class="odd">
+<td align="left">NEW BRUNSWICK (NOUVEAU-BRUNSWICK)</td>
+<td align="left">CA-NB</td>
+</tr>
+<tr class="even">
+<td align="left">NEWFOUNDLAND AND LABRADOR (TERRE-NEUVE)</td>
+<td align="left">CA-NL</td>
+</tr>
+<tr class="odd">
+<td align="left">NOVA SCOTIA (NOUVELLE-ECOSSE)</td>
+<td align="left">CA-NS</td>
+</tr>
+<tr class="even">
+<td align="left">ONTARIO</td>
+<td align="left">CA-ON</td>
+</tr>
+<tr class="odd">
+<td align="left">PRINCE EDWARD ISLAND (ILE-DU-PRINCE-EDOUARD)</td>
+<td align="left">CA-PE</td>
+</tr>
+<tr class="even">
+<td align="left">QUEBEC (QUEBEC)</td>
+<td align="left">CA-QC</td>
+</tr>
+<tr class="odd">
+<td align="left">SASKATCHEWAN</td>
+<td align="left">CA-SK</td>
+</tr>
+<tr class="even">
+<td align="left">NORTHWEST TERRITORIES (TERRITOIRES DU NORD-OUEST)</td>
+<td align="left">CA-NT</td>
+</tr>
+<tr class="odd">
+<td align="left">NUNAVUT</td>
+<td align="left">CA-NU</td>
+</tr>
+<tr class="even">
+<td align="left">YUKON TERRITORY (TERITOIRE DU YUKON)</td>
+<td align="left">CA-YT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="time" class="section level3">
+<h3>Time</h3>
+<p>Here is where you pick the time period of interest.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Time.range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">now 1-H</td>
+<td align="left">Last hour</td>
+</tr>
+<tr class="even">
+<td align="left">now 4-H</td>
+<td align="left">Last four hours</td>
+</tr>
+<tr class="odd">
+<td align="left">now 1-d</td>
+<td align="left">Last day</td>
+</tr>
+<tr class="even">
+<td align="left">now 7-d</td>
+<td align="left">Last seven days</td>
+</tr>
+<tr class="odd">
+<td align="left">today 1-m</td>
+<td align="left">Past 30 days</td>
+</tr>
+<tr class="even">
+<td align="left">today 3-m</td>
+<td align="left">Past 90 days</td>
+</tr>
+<tr class="odd">
+<td align="left">today 12-m</td>
+<td align="left">Past 12 months</td>
+</tr>
+<tr class="even">
+<td align="left">today+5-y</td>
+<td align="left">Last five years (default)</td>
+</tr>
+<tr class="odd">
+<td align="left">all</td>
+<td align="left">Since the beginning of Google Trends (2004)</td>
+</tr>
+<tr class="even">
+<td align="left">Y-m-d Y-m-d</td>
+<td align="left">Time span between two dates (ex.: “2010-01-01 2010-04-03”)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="example" class="section level3">
+<h3>Example</h3>
+<p>Heres an example looking at comparing the search popularity of “skiing” and “swimming” across Canada in the past year.</p>
+<pre class="r"><code>search1&lt;-gtrends(c(&quot;skiing&quot;,&quot;swimming&quot;), time= &quot;today 12-m&quot;, geo = &quot;CA&quot;)
+plot(search1)</code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Note that the y axis does not show the raw volume of searches, but just shows relative popularity with the max value scaled to 100.</p>
+</div>
+</div>
+<div id="advanced-settings" class="section level2">
+<h2>Advanced settings</h2>
+<div id="manually-plotting" class="section level3">
+<h3>Manually plotting</h3>
+<p>For those that want more control over the plotting, you can extract the <code>$interest_over_time</code> object of the returned query to get a data.frame that has the number of hits per year. Note that for some queries where you are comparing two keywords with a large difference in search interest, you may get some days where the value for hits is “&lt;1”. So I convert this to 0.5 to be able to plot this. I also use the function <code>as.Date()</code> to plot the dates correctly.</p>
+<p>See an example looking at “extreme skiing” which is a bit more niche than “swimming”:</p>
+<pre class="r"><code>search2&lt;-gtrends(keyword = c(&quot;extreme skiing&quot;,&quot;swimming&quot;), time= &quot;today 12-m&quot;, geo = &quot;CA&quot;)
+time_trend2&lt;-search2$interest_over_time %&gt;%
+  dplyr::mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+ggplot(time_trend2, aes(x=date, y=hits, colour=keyword)) +
+  geom_line()</code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="combining-keywords" class="section level4">
+<h4>Combining keywords</h4>
+<p>From what I have read, you can’t combine keywords using gtrendsR. So for instance, “swimming OR skiing” would only return that specific keyword, and not the sum of searches of “skiing” and “swimming”:</p>
+<pre class="r"><code>search3&lt;-gtrends(c(&quot;skiing OR swimming&quot;,&quot;skiing&quot;,&quot;swimming&quot;), time= &quot;today 12-m&quot;, geo = &quot;CA&quot;)
+
+time_trend3&lt;-search3$interest_over_time %&gt;%
+  dplyr::mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+head(time_trend3)</code></pre>
+<pre><code>##         date hits            keyword geo       time gprop category
+## 1 2019-05-19    0 skiing OR swimming  CA today 12-m   web        0
+## 2 2019-05-26    0 skiing OR swimming  CA today 12-m   web        0
+## 3 2019-06-02    0 skiing OR swimming  CA today 12-m   web        0
+## 4 2019-06-09    0 skiing OR swimming  CA today 12-m   web        0
+## 5 2019-06-16    0 skiing OR swimming  CA today 12-m   web        0
+## 6 2019-06-23    0 skiing OR swimming  CA today 12-m   web        0</code></pre>
+<pre class="r"><code>ggplot(time_trend3, aes(x=date, y=hits, colour=keyword)) +
+  geom_line()</code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="adding-vertical-lines" class="section level4">
+<h4>Adding vertical lines</h4>
+<p>You may often want to add a vertical line to give some context to the plot. For instance, the start of summer (June 21) and winter (December 21st) might be good dates to mark.</p>
+<pre class="r"><code>search4&lt;-gtrends(c(&quot;skiing OR swimming&quot;,&quot;skiing&quot;,&quot;swimming&quot;), time= &quot;today 12-m&quot;, geo = &quot;CA&quot;)
+
+time_trend4&lt;-search4$interest_over_time %&gt;%
+  dplyr::mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+
+ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+  geom_line() +
+  geom_vline(xintercept=as.Date(&quot;2019-06-21&quot;)) +
+  geom_vline(xintercept=as.Date(&quot;2019-12-21&quot;)) </code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="smoothing" class="section level4">
+<h4>Smoothing</h4>
+<p>When you are more interested in the long term trends, you can use <code>ggplot2::geom_smooth()</code> to hide some of the short term variation.</p>
+<pre class="r"><code>search5&lt;-gtrends(c(&quot;skiing&quot;,&quot;swimming&quot;), time= &quot;today 12-m&quot;, geo = &quot;CA&quot;)
+
+time_trend5&lt;-search5$interest_over_time %&gt;%
+  dplyr::mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+plot_nosmooth&lt;-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+  geom_line() + 
+  labs(title=&quot;No Smoothing&quot;) + 
+  theme(legend.position = &quot;none&quot;)
+
+plot_smooth_20&lt;-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+    geom_smooth(method=&quot;loess&quot;,span=0.2, se=FALSE) +
+  labs(title=&quot;smoothing factor = 0.2&quot;)+ 
+  theme(legend.position = &quot;none&quot;)
+
+
+plot_smooth_40&lt;-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+    geom_smooth(method=&quot;loess&quot;,span=0.4, se=FALSE) +
+  labs(title=&quot;smoothing factor = 0.4&quot;)+ 
+  theme(legend.position = &quot;none&quot;)
+
+
+plot_smooth_60&lt;-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+    geom_smooth(method=&quot;loess&quot;,span=0.6, se=FALSE) +
+  labs(title=&quot;smoothing factor = 0.6&quot;)+ 
+  theme(legend.position = &quot;none&quot;)
+
+
+  
+(plot_nosmooth + plot_smooth_20) / (plot_smooth_40 + plot_smooth_60)  </code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="writing-a-function" class="section level4">
+<h4>Writing a function</h4>
+<p>We can take these features and write a function to be able to quickly generate plots in the same style.</p>
+<pre class="r"><code>plot_trend&lt;-function(keyword_string){
+data&lt;-gtrends(c(keyword_string), time= &quot;2020-01-01 2020-04-05&quot;, geo = &quot;CA&quot;)
+time_trend&lt;-data$interest_over_time %&gt;%
+  mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,hits),
+         date=as.Date(date),
+         keyword=factor(keyword, levels = keyword_string))
+plot&lt;-ggplot(data=time_trend, aes(x=date, y=as.numeric(hits), colour=keyword)) +
+  geom_smooth(method=&quot;loess&quot;,span=0.4, se=FALSE) +
+  geom_vline(xintercept = as.numeric(as.Date(&quot;2020-03-17&quot;))) +
+  theme_bw() +
+  scale_y_continuous(breaks = NULL) +
+  theme(legend.position = &quot;bottom&quot;,
+        legend.title = element_blank(),
+        legend.text=element_text(size=10),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank())
+return(plot)
+}
+
+plot1&lt;-plot_trend(keyword_string = c(&quot;keyword1&quot;,&quot;keyword2&quot;))
+plot1</code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Update May 18, 2020: I had to update the package to version 1.4.6 in order to fix some errors. In the future, be sure that gtrendsR package is the latest version as the first trouble-shooting step!</p>
+</div>
+</div>
+</div>
+
+  </div>
+  
+
+<div class="navigation navigation-single">
+    
+    <a href="/posts/search-trends-of-covid-19/" class="navigation-prev">
+      <i aria-hidden="true" class="fa fa-chevron-left"></i>
+      <span class="navigation-tittle">Search trends during Covid-19</span>
+    </a>
+    
+    
+    <a href="/posts/visualizing-covid-19/" class="navigation-next">
+      <span class="navigation-tittle">Visualizing Covid-19</span>
+      <i aria-hidden="true" class="fa fa-chevron-right"></i>
+    </a>
+    
+</div>
+
+
+  
+
+  
+    
+
+
+</article>
+
+
+        </div>
+        
+    
+
+  
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-165914127-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.11.2/js/all.js" integrity="sha384-b3ua1l97aVGAPEIe48b4TC60WUQbQaGi2jqAWM90y0OZXZeyaTCWtBTKtjW2GXG1" crossorigin="anonymous"></script>
+
+
+    
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+        
+    
+    <script type="text/javascript">
+        
+        hljs.initHighlightingOnLoad();
+    </script>
+    
+
+
+
+
+    
+
+
+
+    </body>
+</html>

@@ -203,7 +203,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 4 min read
+    <i class="fas fa-clock"></i> 5 min read
 </div>
 
 
@@ -216,6 +216,7 @@
 
 <p>This post will go over some of the functionality of the gtrendsR package and showing a quick workflow of how to go from keyword to plot.</p>
 <pre class="r"><code>library(dplyr)
+library(magrittr)
 library(gtrendsR)
 library(knitr)
 library(ggplot2)
@@ -390,13 +391,13 @@ time_trend3&lt;-search3$interest_over_time %&gt;%
                 date=as.Date(date))
 
 head(time_trend3)</code></pre>
-<pre><code>##         date hits geo       time            keyword gprop category
-## 1 2019-04-21    0  CA today 12-m skiing OR swimming   web        0
-## 2 2019-04-28    0  CA today 12-m skiing OR swimming   web        0
-## 3 2019-05-05    0  CA today 12-m skiing OR swimming   web        0
-## 4 2019-05-12    0  CA today 12-m skiing OR swimming   web        0
-## 5 2019-05-19    0  CA today 12-m skiing OR swimming   web        0
-## 6 2019-05-26    0  CA today 12-m skiing OR swimming   web        0</code></pre>
+<pre><code>##         date hits            keyword geo       time gprop category
+## 1 2019-05-19    0 skiing OR swimming  CA today 12-m   web        0
+## 2 2019-05-26    0 skiing OR swimming  CA today 12-m   web        0
+## 3 2019-06-02    0 skiing OR swimming  CA today 12-m   web        0
+## 4 2019-06-09    0 skiing OR swimming  CA today 12-m   web        0
+## 5 2019-06-16    0 skiing OR swimming  CA today 12-m   web        0
+## 6 2019-06-23    0 skiing OR swimming  CA today 12-m   web        0</code></pre>
 <pre class="r"><code>ggplot(time_trend3, aes(x=date, y=hits, colour=keyword)) +
   geom_line()</code></pre>
 <p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
@@ -413,7 +414,8 @@ time_trend4&lt;-search4$interest_over_time %&gt;%
 
 ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
   geom_line() +
-  geom_vline(xintercept=as.Date(&quot;2019-06-21&quot;))</code></pre>
+  geom_vline(xintercept=as.Date(&quot;2019-06-21&quot;)) +
+  geom_vline(xintercept=as.Date(&quot;2019-12-21&quot;)) </code></pre>
 <p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 <div id="smoothing" class="section level4">
@@ -476,8 +478,8 @@ return(plot)
 
 plot1&lt;-plot_trend(keyword_string = c(&quot;keyword1&quot;,&quot;keyword2&quot;))
 plot1</code></pre>
-<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Update May 18, 2020: I had to update the package to version 1.4.6 in order to fix some errors. In the future, be sure that gtrendsR package is the latest version as the first trouble-shooting step!</p>
 </div>
 </div>
 </div>

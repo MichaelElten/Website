@@ -13,21 +13,21 @@
     
     <item>
       <title>How to plot google trends in R</title>
-      <link>/posts/gtrendsr/how-to-plot-google-trends-in-r/</link>
+      <link>/posts/how-to-plot-google-trends-in-r/</link>
       <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/gtrendsr/how-to-plot-google-trends-in-r/</guid>
+      <guid>/posts/how-to-plot-google-trends-in-r/</guid>
       <description>This post will go over some of the functionality of the gtrendsR package and showing a quick workflow of how to go from keyword to plot.
-library(dplyr)library(gtrendsR)library(knitr)library(ggplot2)library(patchwork)The basicsThe function gtrendsR::gtrends() is how you are able to access the google trends data. There are three elements needed to feed into this function:
+library(dplyr)library(magrittr)library(gtrendsR)library(knitr)library(ggplot2)library(patchwork)The basicsThe function gtrendsR::gtrends() is how you are able to access the google trends data. There are three elements needed to feed into this function:
 the word or phrase of interest: keywordthe region of interest: geothe time period of interest: timeKeywordJust enter the search term of interest in quotes.</description>
     </item>
     
     <item>
       <title>Search trends during Covid-19</title>
-      <link>/posts/search-trends/search-trends-of-covid-19/</link>
+      <link>/posts/search-trends-of-covid-19/</link>
       <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/search-trends/search-trends-of-covid-19/</guid>
+      <guid>/posts/search-trends-of-covid-19/</guid>
       <description>The settingIt has been about a month since we have really started to feel the impact of Covid-19 in Canada. Outside of the virus itself, the preventive measures (social distancing, closures of schools, etc.), while necessary, have also impacted our daily routines and habits. Google search trends can help provide some insight into how our behaviours are changing, as a google search is often the first step one takes when wanting to purchase an item, learn how to do something, etc.</description>
     </item>
     

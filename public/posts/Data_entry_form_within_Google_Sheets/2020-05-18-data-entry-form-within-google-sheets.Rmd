@@ -1,0 +1,18 @@
+---
+title: Data entry form within Google Sheets
+author: Michael Elten
+date: '2020-05-18'
+slug: data-entry-form-within-google-sheets
+categories:
+  - Methods
+tags:
+  - Google-sheets
+lastmod: '2020-05-18T12:28:16-04:00'
+layout: posts
+
+highlight: no
+Description: 'A post to show how to make a data entry form within a Google Sheets workbook that can also work from the mobile App'
+
+draft: true
+---
+

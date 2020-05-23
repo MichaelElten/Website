@@ -6,17 +6,26 @@
     <description>Recent content in Google-sheets on Casual Inferences</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 15 May 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/google-sheets/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Data entry form within Google Sheets</title>
+      <link>/posts/data-entry-form-within-google-sheets/</link>
+      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/data-entry-form-within-google-sheets/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Subcategories in Google Sheets</title>
-      <link>/posts/subcategories_in_google_sheets/subcategories-in-google-sheets/</link>
+      <link>/posts/subcategories-in-google-sheets/</link>
       <pubDate>Fri, 15 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>/posts/subcategories_in_google_sheets/subcategories-in-google-sheets/</guid>
+      <guid>/posts/subcategories-in-google-sheets/</guid>
       <description>A problem I came across recently was how to make one drop down list based on the contents of another drop down list in order to specify categories and subcategories.
 I found two ways of doing this - Method 1 is a simpler technique for when you only need one or two of these in a sheet, and Method 2 is for when you need many of these category-subcategory drop down lists as in a larger table or for data entry.</description>
     </item>

@@ -1,0 +1,282 @@
+---
+title: How to plot google trends in R
+author: Michael Elten
+date: '2020-04-19'
+slug: how-to-plot-google-trends-in-r
+categories: [Methods]
+Tags:
+  - gtrendsR
+Description: 'How to plot google search trends in R'
+---
+
+
+
+<p>This post will go over some of the functionality of the gtrendsR package and showing a quick workflow of how to go from keyword to plot.</p>
+<pre class="r"><code>library(dplyr)
+library(magrittr)
+library(gtrendsR)
+library(knitr)
+library(ggplot2)
+library(patchwork)</code></pre>
+<div id="the-basics" class="section level2">
+<h2>The basics</h2>
+<p>The function <code>gtrendsR::gtrends()</code> is how you are able to access the google trends data. There are three elements needed to feed into this function:</p>
+<ul>
+<li>the word or phrase of interest: <code>keyword</code></li>
+<li>the region of interest: <code>geo</code></li>
+<li>the time period of interest: <code>time</code></li>
+</ul>
+<div id="keyword" class="section level3">
+<h3>Keyword</h3>
+<p>Just enter the search term of interest in quotes. To search multiple terms, add as a character vector like so: <code>keyword=c("term 1","term 2")</code>.</p>
+</div>
+<div id="region-of-interest" class="section level3">
+<h3>Region of interest</h3>
+<p>Enter the code corresponding to the region of interest. For example, to look at Canada, you would input <code>geo="CA"</code>. To search the province of Ontario within Canada, you would input <code>geo="CA-ON"</code>. You can compare multiple regions in a similar way to comparing multiple keywords: <code>geo=c("CA-ON","CA-BC")</code>.</p>
+<p>Heres a list of the codes for Canada and it’s provinces/territories. For the full list you can run the function <code>data(countries)</code> after loading the gtrendsR package.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Name</th>
+<th align="left">GEO code</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">CANADA</td>
+<td align="left">CA</td>
+</tr>
+<tr class="even">
+<td align="left">ALBERTA</td>
+<td align="left">CA-AB</td>
+</tr>
+<tr class="odd">
+<td align="left">BRITISH COLUMBIA (COLOMBIE-BRITANNIQUE)</td>
+<td align="left">CA-BC</td>
+</tr>
+<tr class="even">
+<td align="left">MANITOBA</td>
+<td align="left">CA-MB</td>
+</tr>
+<tr class="odd">
+<td align="left">NEW BRUNSWICK (NOUVEAU-BRUNSWICK)</td>
+<td align="left">CA-NB</td>
+</tr>
+<tr class="even">
+<td align="left">NEWFOUNDLAND AND LABRADOR (TERRE-NEUVE)</td>
+<td align="left">CA-NL</td>
+</tr>
+<tr class="odd">
+<td align="left">NOVA SCOTIA (NOUVELLE-ECOSSE)</td>
+<td align="left">CA-NS</td>
+</tr>
+<tr class="even">
+<td align="left">ONTARIO</td>
+<td align="left">CA-ON</td>
+</tr>
+<tr class="odd">
+<td align="left">PRINCE EDWARD ISLAND (ILE-DU-PRINCE-EDOUARD)</td>
+<td align="left">CA-PE</td>
+</tr>
+<tr class="even">
+<td align="left">QUEBEC (QUEBEC)</td>
+<td align="left">CA-QC</td>
+</tr>
+<tr class="odd">
+<td align="left">SASKATCHEWAN</td>
+<td align="left">CA-SK</td>
+</tr>
+<tr class="even">
+<td align="left">NORTHWEST TERRITORIES (TERRITOIRES DU NORD-OUEST)</td>
+<td align="left">CA-NT</td>
+</tr>
+<tr class="odd">
+<td align="left">NUNAVUT</td>
+<td align="left">CA-NU</td>
+</tr>
+<tr class="even">
+<td align="left">YUKON TERRITORY (TERITOIRE DU YUKON)</td>
+<td align="left">CA-YT</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="time" class="section level3">
+<h3>Time</h3>
+<p>Here is where you pick the time period of interest.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Time.range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">now 1-H</td>
+<td align="left">Last hour</td>
+</tr>
+<tr class="even">
+<td align="left">now 4-H</td>
+<td align="left">Last four hours</td>
+</tr>
+<tr class="odd">
+<td align="left">now 1-d</td>
+<td align="left">Last day</td>
+</tr>
+<tr class="even">
+<td align="left">now 7-d</td>
+<td align="left">Last seven days</td>
+</tr>
+<tr class="odd">
+<td align="left">today 1-m</td>
+<td align="left">Past 30 days</td>
+</tr>
+<tr class="even">
+<td align="left">today 3-m</td>
+<td align="left">Past 90 days</td>
+</tr>
+<tr class="odd">
+<td align="left">today 12-m</td>
+<td align="left">Past 12 months</td>
+</tr>
+<tr class="even">
+<td align="left">today+5-y</td>
+<td align="left">Last five years (default)</td>
+</tr>
+<tr class="odd">
+<td align="left">all</td>
+<td align="left">Since the beginning of Google Trends (2004)</td>
+</tr>
+<tr class="even">
+<td align="left">Y-m-d Y-m-d</td>
+<td align="left">Time span between two dates (ex.: “2010-01-01 2010-04-03”)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="example" class="section level3">
+<h3>Example</h3>
+<p>Heres an example looking at comparing the search popularity of “skiing” and “swimming” across Canada in the past year.</p>
+<pre class="r"><code>search1&lt;-gtrends(c(&quot;skiing&quot;,&quot;swimming&quot;), time= &quot;today 12-m&quot;, geo = &quot;CA&quot;)
+plot(search1)</code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Note that the y axis does not show the raw volume of searches, but just shows relative popularity with the max value scaled to 100.</p>
+</div>
+</div>
+<div id="advanced-settings" class="section level2">
+<h2>Advanced settings</h2>
+<div id="manually-plotting" class="section level3">
+<h3>Manually plotting</h3>
+<p>For those that want more control over the plotting, you can extract the <code>$interest_over_time</code> object of the returned query to get a data.frame that has the number of hits per year. Note that for some queries where you are comparing two keywords with a large difference in search interest, you may get some days where the value for hits is “&lt;1”. So I convert this to 0.5 to be able to plot this. I also use the function <code>as.Date()</code> to plot the dates correctly.</p>
+<p>See an example looking at “extreme skiing” which is a bit more niche than “swimming”:</p>
+<pre class="r"><code>search2&lt;-gtrends(keyword = c(&quot;extreme skiing&quot;,&quot;swimming&quot;), time= &quot;today 12-m&quot;, geo = &quot;CA&quot;)
+time_trend2&lt;-search2$interest_over_time %&gt;%
+  dplyr::mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+ggplot(time_trend2, aes(x=date, y=hits, colour=keyword)) +
+  geom_line()</code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="combining-keywords" class="section level4">
+<h4>Combining keywords</h4>
+<p>From what I have read, you can’t combine keywords using gtrendsR. So for instance, “swimming OR skiing” would only return that specific keyword, and not the sum of searches of “skiing” and “swimming”:</p>
+<pre class="r"><code>search3&lt;-gtrends(c(&quot;skiing OR swimming&quot;,&quot;skiing&quot;,&quot;swimming&quot;), time= &quot;today 12-m&quot;, geo = &quot;CA&quot;)
+
+time_trend3&lt;-search3$interest_over_time %&gt;%
+  dplyr::mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+head(time_trend3)</code></pre>
+<pre><code>##         date hits            keyword geo       time gprop category
+## 1 2019-05-19    0 skiing OR swimming  CA today 12-m   web        0
+## 2 2019-05-26    0 skiing OR swimming  CA today 12-m   web        0
+## 3 2019-06-02    0 skiing OR swimming  CA today 12-m   web        0
+## 4 2019-06-09    0 skiing OR swimming  CA today 12-m   web        0
+## 5 2019-06-16    0 skiing OR swimming  CA today 12-m   web        0
+## 6 2019-06-23    0 skiing OR swimming  CA today 12-m   web        0</code></pre>
+<pre class="r"><code>ggplot(time_trend3, aes(x=date, y=hits, colour=keyword)) +
+  geom_line()</code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
+<div id="adding-vertical-lines" class="section level4">
+<h4>Adding vertical lines</h4>
+<p>You may often want to add a vertical line to give some context to the plot. For instance, the start of summer (June 21) and winter (December 21st) might be good dates to mark.</p>
+<pre class="r"><code>search4&lt;-gtrends(c(&quot;skiing OR swimming&quot;,&quot;skiing&quot;,&quot;swimming&quot;), time= &quot;today 12-m&quot;, geo = &quot;CA&quot;)
+
+time_trend4&lt;-search4$interest_over_time %&gt;%
+  dplyr::mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+
+ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+  geom_line() +
+  geom_vline(xintercept=as.Date(&quot;2019-06-21&quot;)) +
+  geom_vline(xintercept=as.Date(&quot;2019-12-21&quot;)) </code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+</div>
+<div id="smoothing" class="section level4">
+<h4>Smoothing</h4>
+<p>When you are more interested in the long term trends, you can use <code>ggplot2::geom_smooth()</code> to hide some of the short term variation.</p>
+<pre class="r"><code>search5&lt;-gtrends(c(&quot;skiing&quot;,&quot;swimming&quot;), time= &quot;today 12-m&quot;, geo = &quot;CA&quot;)
+
+time_trend5&lt;-search5$interest_over_time %&gt;%
+  dplyr::mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,as.numeric(hits)),
+                date=as.Date(date))
+
+plot_nosmooth&lt;-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+  geom_line() + 
+  labs(title=&quot;No Smoothing&quot;) + 
+  theme(legend.position = &quot;none&quot;)
+
+plot_smooth_20&lt;-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+    geom_smooth(method=&quot;loess&quot;,span=0.2, se=FALSE) +
+  labs(title=&quot;smoothing factor = 0.2&quot;)+ 
+  theme(legend.position = &quot;none&quot;)
+
+
+plot_smooth_40&lt;-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+    geom_smooth(method=&quot;loess&quot;,span=0.4, se=FALSE) +
+  labs(title=&quot;smoothing factor = 0.4&quot;)+ 
+  theme(legend.position = &quot;none&quot;)
+
+
+plot_smooth_60&lt;-ggplot(time_trend4, aes(x=date, y=hits, colour=keyword)) +
+    geom_smooth(method=&quot;loess&quot;,span=0.6, se=FALSE) +
+  labs(title=&quot;smoothing factor = 0.6&quot;)+ 
+  theme(legend.position = &quot;none&quot;)
+
+
+  
+(plot_nosmooth + plot_smooth_20) / (plot_smooth_40 + plot_smooth_60)  </code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="writing-a-function" class="section level4">
+<h4>Writing a function</h4>
+<p>We can take these features and write a function to be able to quickly generate plots in the same style.</p>
+<pre class="r"><code>plot_trend&lt;-function(keyword_string){
+data&lt;-gtrends(c(keyword_string), time= &quot;2020-01-01 2020-04-05&quot;, geo = &quot;CA&quot;)
+time_trend&lt;-data$interest_over_time %&gt;%
+  mutate(hits=ifelse(hits==&quot;&lt;1&quot;,0.5,hits),
+         date=as.Date(date),
+         keyword=factor(keyword, levels = keyword_string))
+plot&lt;-ggplot(data=time_trend, aes(x=date, y=as.numeric(hits), colour=keyword)) +
+  geom_smooth(method=&quot;loess&quot;,span=0.4, se=FALSE) +
+  geom_vline(xintercept = as.numeric(as.Date(&quot;2020-03-17&quot;))) +
+  theme_bw() +
+  scale_y_continuous(breaks = NULL) +
+  theme(legend.position = &quot;bottom&quot;,
+        legend.title = element_blank(),
+        legend.text=element_text(size=10),
+        axis.title.x=element_blank(),
+        axis.title.y=element_blank())
+return(plot)
+}
+
+plot1&lt;-plot_trend(keyword_string = c(&quot;keyword1&quot;,&quot;keyword2&quot;))
+plot1</code></pre>
+<p><img src="/posts/gtrendsr/2020-04-04-how-to-plot-google-trends-in-r_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Update May 18, 2020: I had to update the package to version 1.4.6 in order to fix some errors. In the future, be sure that gtrendsR package is the latest version as the first trouble-shooting step!</p>
+</div>
+</div>
+</div>
