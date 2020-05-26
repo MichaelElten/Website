@@ -200,7 +200,7 @@
     
     
     <br/>
-    <i class="fas fa-clock"></i> 0 min read
+    <i class="fas fa-clock"></i> 4 min read
 </div>
 
 
@@ -211,7 +211,96 @@
     
 
 
+<p><img src="/posts/data-entry-form-within-google-sheets/gif1_data_form_demo.gif" /></p>
+<p>You may sometimes want to collect data directly in a Google Sheets form. While you can certainly do so manually in a giant data table, I find having a separate sheet for data entry may be a more elegant solution, and can also protect you from accidentally editing other rows in a data table.</p>
+<p>Here I present a quick and easy way to design a data entry form within a Google Sheets workbook, that even works from the mobile app!</p>
+<div id="setting-up" class="section level3">
+<h3>Setting up</h3>
+<p>You will want to have a <em>Form sheet</em> where the user enters data, a <em>Data sheet</em> where the submitted data gets compiled, and probably a third <em>Category sheet</em> that will hold the different options for some categories so that you can make some drop-down lists in the data entry form.</p>
+</div>
+<div id="form-sheet" class="section level3">
+<h3>Form sheet</h3>
+<p><img src="/posts/data-entry-form-within-google-sheets/pic1_formsheet.png" /></p>
+<p>The form sheet should be a simple interface with the variables clearly labelled, and the data entry cells clearly indicated. Data validation should be used where possible to make data entry quicker and more accurate.</p>
+</div>
+<div id="data-sheet" class="section level3">
+<h3>Data sheet</h3>
+<p><img src="/posts/data-entry-form-within-google-sheets/pic2_datasheet.png" /></p>
+<p>This sheet is where the data from the <em>Form sheet</em> will go into. The first row should be the same headers from the <em>form sheet</em>.</p>
+</div>
+<div id="categories-sheet" class="section level3">
+<h3>Categories sheet</h3>
+<p><img src="/posts/data-entry-form-within-google-sheets/pic3_categorysheet.png" /></p>
+<p>This sheet contains the possible categories for some of the entries in the form sheet.</p>
+</div>
+<div id="google-scripts" class="section level3">
+<h3>Google Scripts</h3>
+<p>Here are two scripts that are used in this sheet:</p>
+<pre><code>function SubmitData() {
+  var ss        = SpreadsheetApp.getActiveSpreadsheet();
+  var formSS    = ss.getSheetByName(&quot;Form sheet&quot;); 
+  var datasheet = ss.getSheetByName(&quot;Data sheet&quot;);
+  
+  var values = [[formSS.getRange(&quot;A3&quot;).getValue(),
+                 formSS.getRange(&quot;B3&quot;).getValue(),
+                 formSS.getRange(&quot;C3&quot;).getValue(),
+                 formSS.getRange(&quot;D3&quot;).getValue(),
+                 formSS.getRange(&quot;E3&quot;).getValue()]];
+  
+  datasheet.getRange(datasheet.getLastRow()+1, 1, 1, 5).setValues(values);
+  
+  formSS.getRange(&#39;A3:E3&#39;).clearContent();
 
+}
+
+function ClearData() {
+  var ss        = SpreadsheetApp.getActiveSpreadsheet();
+  var formSS    = ss.getSheetByName(&quot;Form sheet&quot;);
+  
+  formSS.getRange(&#39;A3:E3&#39;).clearContent();
+
+}</code></pre>
+<p>The <code>SubmitData()</code> function takes the values in cells A3 to E3 of the forms sheet, and adds them as a new row at the bottom of the <em>Data sheet</em>, and then clears them from the data entry sheet.</p>
+<p>The <code>ClearData()</code> function will clear the A3 to E3 cells in the form without adding them to the <em>Data sheet</em>.</p>
+</div>
+<div id="adding-a-button-to-launch-scripts" class="section level3">
+<h3>Adding a button to launch scripts</h3>
+<p>You can then assign these scripts to buttons so that they can be launched with a simple click.</p>
+<p>First, create the drawing:</p>
+<p><img src="/posts/data-entry-form-within-google-sheets/gif2_createbutton.gif" /></p>
+<p>Next, assign the script:</p>
+<p><img src="/posts/data-entry-form-within-google-sheets/gif3_assignscript.gif" /></p>
+<p>Repeat the above for the ClearData script, and then you now can easily submit and clear data from the form with the click of a button.</p>
+</div>
+<div id="making-the-form-work-on-mobile" class="section level3">
+<h3>Making the form work on mobile</h3>
+<p>A drawback of the above way of launching Google Scripts is that it doesn’t work on the mobile app. If you want the ability to enter data from mobile, here is an easy way to accomplish that.</p>
+<p>First, add a dropdown list somewhere on the <em>Form sheet</em> with the <code>SubmitData()</code> and <code>ClearData()</code> function names as options. Next, add the following script:</p>
+<pre><code>function onEdit(e) {
+var activesheet = SpreadsheetApp.getActiveSheet()  
+  
+if (activesheet.getName()==&#39;Form sheet&#39;){   
+if (e.range.getA1Notation() == &#39;A5&#39;) {
+    if (/^\w+$/.test(e.value)) {        
+      this[e.value]();
+      e.range.clearContent();
+    }
+  }
+}
+}</code></pre>
+<p>I took this idea from <a href="https://webapps.stackexchange.com/questions/87346/add-a-script-trigger-to-google-sheet-that-will-work-in-android-mobile-app">this stack overflow thread</a>.</p>
+<p>What this function does is it checks if the sheet is named <em>Form sheet</em>, and if the cell being edited is in <code>A5</code>. Then, if this cell contains a function name, it will run that function.</p>
+<p>I named cell <code>A5</code> as this was where I placed the drop-down list in my sheet, but you should customize this script to specify the name of your sheet, and the location of the drop-down list in your sheet, of course.</p>
+</div>
+<div id="changing-the-number-of-fields-in-the-data-entry-form" class="section level3">
+<h3>Changing the number of fields in the data entry form</h3>
+<p>To change the number of fields in the data entry form is relatively easy - you just need to change several arguments in the Google Scripts.</p>
+<p>In the <code>SubmitData()</code> function, you can change the number of values by adding or removing elements in the <code>var values</code> statement, changing the last number in the <code>datasheet.getRange()</code> statement from <code>5</code> to the number of elements you have in the form, and updating the range of cells to be cleared in the <code>formSS.getRange()</code> statement.</p>
+<p>In the <code>ClearData()</code> function, just change the range in the <code>formSS.getRange()</code> statement to reflect the cells you want to be cleared.</p>
+<p>Here is a handy picture of what should be changed in the Google scripts to make it fit your Google Sheet:
+<img src="/posts/data-entry-form-within-google-sheets/pic4_ScriptCustomization.png" /></p>
+<p>Finally, here is a link to a copy of the Google Sheet used in this demo: <a href="https://docs.google.com/spreadsheets/d/1cFy9au1BvoiQAo2KyXSJkFDdc2euRRDOctIygtCbdcU/edit?usp=sharing" class="uri">https://docs.google.com/spreadsheets/d/1cFy9au1BvoiQAo2KyXSJkFDdc2euRRDOctIygtCbdcU/edit?usp=sharing</a></p>
+</div>
 
   </div>
   

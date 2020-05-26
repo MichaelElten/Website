@@ -17,7 +17,8 @@
       <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/data-entry-form-within-google-sheets/</guid>
-      <description></description>
+      <description>You may sometimes want to collect data directly in a Google Sheets form. While you can certainly do so manually in a giant data table, I find having a separate sheet for data entry may be a more elegant solution, and can also protect you from accidentally editing other rows in a data table.
+Here I present a quick and easy way to design a data entry form within a Google Sheets workbook, that even works from the mobile app!</description>
     </item>
     
     <item>
@@ -31,7 +32,7 @@ I found two ways of doing this - Method 1 is a simpler technique for when you on
     </item>
     
     <item>
-      <title>How to plot google trends in R</title>
+      <title>How to plot Google trends in R</title>
       <link>/posts/how-to-plot-google-trends-in-r/</link>
       <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
       

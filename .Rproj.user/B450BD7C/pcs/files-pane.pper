@@ -1,8 +1,8 @@
 {
-    "path" : "C:/Michael/R projects/Website/static/data",
+    "path" : "C:/Michael/R projects/Website/content/posts",
     "sortOrder" : [
         {
-            "ascending" : true,
+            "ascending" : false,
             "columnIndex" : 2
         }
     ]

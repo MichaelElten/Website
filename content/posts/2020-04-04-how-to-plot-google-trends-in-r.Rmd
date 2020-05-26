@@ -1,12 +1,12 @@
 ---
-title: How to plot google trends in R
+title: How to plot Google trends in R
 author: Michael Elten
 date: '2020-04-19'
 slug: how-to-plot-google-trends-in-r
 categories: [Methods]
 Tags:
   - gtrendsR
-Description: 'How to plot google search trends in R'
+Description: 'How to plot Google search trends in R'
 ---
 
 

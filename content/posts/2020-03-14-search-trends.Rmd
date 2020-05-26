@@ -8,7 +8,7 @@ Tags:
 - gtrendsR
 - GGplot
 - Covid-19
-Description: 'Looking at google search trends following the Covid-19 outbreak in Canada'
+Description: 'Looking at Google search trends immediately following the Covid-19 outbreak in Canada'
 ---
 
 ## The setting

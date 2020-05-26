@@ -22,10 +22,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Search trends during Covid-19"/>
-<meta name="twitter:description" content="Looking at google search trends following the Covid-19 outbreak in Canada"/>
+<meta name="twitter:description" content="Looking at Google search trends immediately following the Covid-19 outbreak in Canada"/>
 
 <meta property="og:title" content="Search trends during Covid-19" />
-<meta property="og:description" content="Looking at google search trends following the Covid-19 outbreak in Canada" />
+<meta property="og:description" content="Looking at Google search trends immediately following the Covid-19 outbreak in Canada" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/posts/search-trends-of-covid-19/" />
 <meta property="article:published_time" content="2020-04-05T00:00:00+00:00" />
@@ -260,7 +260,7 @@ fitness_plot&lt;-plot_trend(keyword_string = c(&quot;goodlife fitness&quot;, &qu
 coffee_plot&lt;-plot_trend(keyword_string = c(&quot;Tim Hortons coffee&quot;,&quot;how to make coffee&quot;))
 
 (hair_plot + food_plot) / (fitness_plot + coffee_plot)</code></pre>
-<p><img src="/posts/Search-trends/2020-03-14-search-trends_files/figure-html/closures-1.png" width="672" /></p>
+<p><img src="/posts/2020-03-14-search-trends_files/figure-html/closures-1.png" width="672" /></p>
 <p>Desperate times call for desperate measures. Many are turning to Google to teach them how to cut their hair (a trend that will no doubt grow). On the bright side, people are learning essential skills like how to stay fit at home and how to cook pizza, two opposing but powerful skills to master (though it appears that the motivation for pizza is increasing while the interest in home workouts is waning).</p>
 </div>
 <div id="entertainment" class="section level2">
@@ -268,11 +268,11 @@ coffee_plot&lt;-plot_trend(keyword_string = c(&quot;Tim Hortons coffee&quot;,&qu
 <p>With more people staying home, did more people look into streaming content at home? How about the major sports leagues, whose seasons were all put on pause.</p>
 <pre class="r"><code>streaming_plot&lt;-plot_trend(keyword_string = c(&quot;disney +&quot;,&quot;netflix&quot;,&quot;prime video&quot;))
 streaming_plot</code></pre>
-<p><img src="/posts/Search-trends/2020-03-14-search-trends_files/figure-html/entertainment-1.png" width="672" /></p>
+<p><img src="/posts/2020-03-14-search-trends_files/figure-html/entertainment-1.png" width="672" /></p>
 <p>Looks like people defaulted to the most established streaming service, Netflix, while Disney + and Amazon’s prime video saw smaller boosts in search popularity.</p>
 <pre class="r"><code>sports_plot&lt;-plot_trend(keyword_string = c(&quot;nba&quot;,&quot;mlb&quot;,&quot;mls&quot;,&quot;nhl&quot;))
 sports_plot + geom_vline(xintercept = as.numeric(as.Date(&quot;2020-03-12&quot;)), colour=&quot;darkblue&quot;)</code></pre>
-<p><img src="/posts/Search-trends/2020-03-14-search-trends_files/figure-html/sports-1.png" width="672" /></p>
+<p><img src="/posts/2020-03-14-search-trends_files/figure-html/sports-1.png" width="672" /></p>
 <p>The NBA and NHL, both approaching the end of their regular seasons showed drastic drops in search interest as they were cancelled on March 12 (the first line highlighted in blue).</p>
 </div>
 <div id="working-from-home" class="section level2">
@@ -284,7 +284,7 @@ video_plot&lt;-plot_trend(keyword_string = c(&quot;zoom&quot;,&quot;skype&quot;,
 communication_plot&lt;-plot_trend(keyword_string = c(&quot;slack&quot;,&quot;discord&quot;,&quot;microsoft teams&quot;))
 
 (teaching_plot + homeoffice_plot) /  (video_plot + communication_plot)</code></pre>
-<p><img src="/posts/Search-trends/2020-03-14-search-trends_files/figure-html/WFH-1.png" width="672" /></p>
+<p><img src="/posts/2020-03-14-search-trends_files/figure-html/WFH-1.png" width="672" /></p>
 <p>Looks like parents are needing refreshers on their math much more than their english. In terms of home office essentials, people seem to be most interested in getting a new desk as opposed to a new monitor or chair. Zoom seems to be the teleconferencing software of choice, perhaps due to it’s simplicity. Out of the text communication services, Microsoft Teams is seeing the quickest rise in interest.</p>
 </div>
 <div id="conclusion" class="section level2">
@@ -304,7 +304,7 @@ communication_plot&lt;-plot_trend(keyword_string = c(&quot;slack&quot;,&quot;dis
     
     
     <a href="/posts/how-to-plot-google-trends-in-r/" class="navigation-next">
-      <span class="navigation-tittle">How to plot google trends in R</span>
+      <span class="navigation-tittle">How to plot Google trends in R</span>
       <i aria-hidden="true" class="fa fa-chevron-right"></i>
     </a>
     
