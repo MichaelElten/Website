@@ -12,9 +12,18 @@
     
     
     <item>
+      <title>Getting-Fitbit-data-in-R</title>
+      <link>/posts/getting-fitbit-data-in-r/</link>
+      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/getting-fitbit-data-in-r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Data entry form within Google Sheets</title>
       <link>/posts/data-entry-form-within-google-sheets/</link>
-      <pubDate>Mon, 18 May 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
       
       <guid>/posts/data-entry-form-within-google-sheets/</guid>
       <description>You may sometimes want to collect data directly in a Google Sheets form. While you can certainly do so manually in a giant data table, I find having a separate sheet for data entry may be a more elegant solution, and can also protect you from accidentally editing other rows in a data table.

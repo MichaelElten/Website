@@ -4,8 +4,8 @@ date: {{ .Date }}
 lastmod: {{ .Date }}
 tags : [ "dev", "hugo", "hyde-hyde"]
 categories : [ "dev" ]
-layout: post
-type:  "post"
+layout: posts
+type:  "posts"
 highlight: false
 draft: true
 ---
