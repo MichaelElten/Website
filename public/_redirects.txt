@@ -1,1 +1,3 @@
 /posts/specialcharacters_ggplotlabels/adding-special-characters-ggplot-labels   /posts/adding-special-characters-ggplot-labels
+
+/post/weather-analysis /posts/ottawa-winters
