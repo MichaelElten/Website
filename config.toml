@@ -22,7 +22,7 @@ googleAnalytics = "UA-165914127-1"
     description = "A WIP blog by ME"
     authorimage = "/img/Michael_BW.jpg"
     dateformat = "Jan 2, 2006"
-    mainSections = ["portfolio","posts"]
+    mainSections = ["posts"]
     
     # sidebar, copyright & license
     copyright = "Michael Elten"
@@ -33,7 +33,7 @@ googleAnalytics = "UA-165914127-1"
 
     # https://highlightjs.org
     highlightjs = true
-    highlightjsstyle = "github"
+    highlightjsstyle = "rainbow"
     
     # please choose either GraphComment or Disqus or Utterances
     #GraphCommentId = "..."
@@ -49,7 +49,6 @@ googleAnalytics = "UA-165914127-1"
     github = "MichaelElten"
     linkedin = "michael-elten-496115118/"
     twitter = "MichaelElten"
-    email = "elten.michael@gmail.com"
 
 
 ## Main Menu

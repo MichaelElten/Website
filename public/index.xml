@@ -6,20 +6,7 @@
     <description>Recent content on Casual Inferences</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 09 Apr 2014 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Getting-Fitbit-data-in-R</title>
-      <link>/posts/getting-fitbit-data-in-r/</link>
-      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/getting-fitbit-data-in-r/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Data entry form within Google Sheets</title>
       <link>/posts/data-entry-form-within-google-sheets/</link>
@@ -41,15 +28,6 @@ I found two ways of doing this - Method 1 is a simpler technique for when you on
     </item>
     
     <item>
-      <title>Visualizing Covid-19</title>
-      <link>/posts/visualizing-covid-19/</link>
-      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/visualizing-covid-19/</guid>
-      <description>Getting data sources</description>
-    </item>
-    
-    <item>
       <title>How to plot Google trends in R</title>
       <link>/posts/how-to-plot-google-trends-in-r/</link>
       <pubDate>Sun, 19 Apr 2020 00:00:00 +0000</pubDate>
@@ -58,6 +36,15 @@ I found two ways of doing this - Method 1 is a simpler technique for when you on
       <description>This post will go over some of the functionality of the gtrendsR package and showing a quick workflow of how to go from keyword to plot.
 library(dplyr)library(magrittr)library(gtrendsR)library(knitr)library(ggplot2)library(patchwork)The basicsThe function gtrendsR::gtrends() is how you are able to access the google trends data. There are three elements needed to feed into this function:
 the word or phrase of interest: keywordthe region of interest: geothe time period of interest: timeKeywordJust enter the search term of interest in quotes.</description>
+    </item>
+    
+    <item>
+      <title>A Shiny app to plot VOCs in Canada</title>
+      <link>/portfolio/p1/</link>
+      <pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/p1/</guid>
+      <description>Here is a longer summary of the project. You can write as long as you wish.</description>
     </item>
     
     <item>
@@ -85,8 +72,8 @@ Unicode is a standardized coding scheme for characters of all languages. As of M
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/posts/ottawa-winters/</guid>
-      <description>The settingIt was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.
-Luckily for me, there is an excellent publically available data source for historical Canadian weather data, provided by Environment Canada.</description>
+      <description>The settingIt was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicions, I wanted to take a look back at previous years to see how this past winter ranked.
+Luckily for me, there is an excellent publicly available data source for historical Canadian weather data, provided by Environment Canada.</description>
     </item>
     
     <item>

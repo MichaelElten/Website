@@ -9,9 +9,7 @@ tags:
 lastmod: '2020-03-30T18:04:51-04:00'
 layout: posts
 type: posts
-highlight: no
 Description: 'Using special characters in GGplot labels'
-
 --- 
 
 I find that I will often need to add special characters such as "`r paste0("\u00b5")`" in my figure labels. This is an example of one solution I found to add special characters into them. The solution? Unicode characters.

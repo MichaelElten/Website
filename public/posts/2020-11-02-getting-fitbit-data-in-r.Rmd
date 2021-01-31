@@ -1,0 +1,36 @@
+---
+title: Getting Fitbit data in R
+author: Michael Elten
+date: '2020-11-02'
+slug: getting-fitbit-data-in-r
+categories:
+  - Methods
+tags:
+  - R
+  - Fitbit
+lastmod: '2020-11-02T19:44:46-04:00'
+layout: posts
+type: posts
+draft: true
+
+Description: "This post shows you how to import your Fitbit data into R"
+---
+
+
+*Note - the way I will discuss in this post works best for people wanting only a retrospective look at their Fitbit data. For users that expect to analyse their fitbit data on an ongoing basis, I highly recommend checking out the looking into accessing the Fitbit API through things like the ["fitbitr"  package](https://github.com/teramonagi/fitbitr) (disclaimer: I haven't tried that particular one out yet) *
+
+## Download your data
+
+Fitbit offers several data export options on the dashboard accessible through your web browser. One such option is to export the Fitbit data for the lifetime of your account, including absolutely everything from your heart rate logged every 5 seconds, to your sleep data and any Fitbit friends you happened to make. While you may not be interested in all of this, I think this is the most efficient way at getting your fitbit data if you don't want to do it in batches of 31 days at a time.
+
+To get to the data export page, you will need to log into your fitbit account on a web browser, access the dashboard, and then open the settings menu, from here you can select the heading **Data Export** on the left, and then select the **Request Data** Button below when you are ready to proceed.  
+
+![](/posts/getting-fitbit-data-in-r/Fitbit_Menu_Pic.png)  
+<br/>
+Next you will be sent an email from Fitbit asking to confirm your data export request. Once confirmed you should get an email letting you know that your export has begun, and then another once your export has completed. The time for the export to complete varies, and Fitbit warns that it could take several days if you have a lot of data, but it took about half an hour for me to download my three years of data. Once completed, you can download a compressed folder with all your fitbit data from the Fitbit dashboard.
+
+## Accessing your data in R
+
+You will probably want to move this entire folder to a 
+
+## Example code

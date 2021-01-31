@@ -1,0 +1,68 @@
+---
+title: Organizing an R project file structure
+author: ''
+date: '2020-11-11'
+slug: organizing-an-r-project-file-structure
+categories:
+  - Methods
+tags:
+  - R
+lastmod: '2020-11-11T15:44:50-05:00'
+layout: posts
+type: posts
+draft: true
+
+Description: 'How to set up the folder structure for an R project'
+---
+
+My typical file structure:
+```
+project/
+│   
+└───README.md
+└───Resources/
+└───Output/
+│
+└───Data/
+│   │
+│   │───raw_data/
+│   │───temp_data/
+│   
+└───Scripts/
+    │
+    │───01_import_data.R
+    │───02_process_data.R
+    │───03_plot_data.R
+    │───Functions.R
+```
+
+
+#  What is the purpose of having a good R project file structure
+
+Have a good and consistent
+
+Why use R project over single script files?
+
+Can easily move between projects
+Can look back and know where to find output, etc.
+
+
+# Folder overview
+
+#### ReadME file
+#### Data folder
+Discuss raw_data vs intermediate data
+
+#### Scripts folder
+Show how a "sources" .R file can be used to store common functions, and ggplot themes (plug ggplot theme post)  
+
+#### Output folder
+Talk about how output can be dated in the file names
+Report output  
+
+#### Resources folder
+Talk about how other resources can be held here (data dictionaries, administrative stuff for the project)
+
+# Closing remarks
+Finding and using a consistent file structure that works for you is important
+Don't get bogged down on designing the ideal structure, just find a functional format that works for the type of analysis you are doing, and adapt it as you gain more experience

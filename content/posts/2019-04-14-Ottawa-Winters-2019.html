@@ -2,23 +2,23 @@
 title: "Ottawa Winters -2019"
 author: "Michael Elten"
 date: '2019-03-27'
-output: pdf_document
+slug: ottawa-winters
 categories: [Analysis]
 Tags:
 - Data Visualization
 - Ridgeplot
 - GGanimate
-slug: ottawa-winters
 Description: 'Analysis of temperatures, snow and Canal season lengths of Ottawa winters past.'
 layout: posts
 ---
 
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <div id="the-setting" class="section level2">
 <h2>The setting</h2>
-<p>It was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.</p>
-<p>Luckily for me, there is an excellent publically available data source for historical Canadian weather data, provided by <a href="http://climate.weather.gc.ca/historical_data/search_historic_data_e.html">Environment Canada</a>.</p>
+<p>It was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicions, I wanted to take a look back at previous years to see how this past winter ranked.</p>
+<p>Luckily for me, there is an excellent publicly available data source for historical Canadian weather data, provided by <a href="http://climate.weather.gc.ca/historical_data/search_historic_data_e.html">Environment Canada</a>.</p>
 </div>
 <div id="load-packages-and-import-data" class="section level2">
 <h2>Load packages and import data</h2>
@@ -36,6 +36,17 @@ library(&quot;knitr&quot;) #creation of tables</code></pre>
   mutate(`Date/Time`=parse_date(`Date/Time`, &quot;%d/%m/%Y&quot;))</code></pre>
 <p>Here is a sample of what the data looked like:</p>
 <table>
+<colgroup>
+<col width="11%" />
+<col width="7%" />
+<col width="8%" />
+<col width="6%" />
+<col width="12%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="center">Date/Time</th>
@@ -147,7 +158,7 @@ snow_animate&lt;-winter_only_data %&gt;%
   transition_reveal(`Date/Time`)
 
 animate(snow_animate, renderer = gifski_renderer(loop = T))</code></pre>
-<p><img src="/posts/Ottawa-Winters-2019/index_files/figure-html/Snowfall-1.gif" /><!-- --></p>
+<p><img src="/posts/2019-04-14-Ottawa-Winters-2019_files/figure-html/Snowfall-1.gif" /><!-- --></p>
 <p>I then used <code>geom_density_ridges</code> to look at how the snow on the ground in the past winter has compared to previous winters.</p>
 <pre class="r"><code># Ridgeplot comparison of snow on ground for past 4 winters
 winter_only_data %&gt;%
@@ -163,7 +174,7 @@ winter_only_data %&gt;%
         axis.title = element_text(size=14), 
         plot.subtitle = element_text(size=10),
         plot.title = element_text(size=16))</code></pre>
-<p><img src="/posts/Ottawa-Winters-2019/index_files/figure-html/Snowfall2-1.png" width="672" /></p>
+<p><img src="/posts/2019-04-14-Ottawa-Winters-2019_files/figure-html/Snowfall2-1.png" width="672" /></p>
 </div>
 <div id="temperature-analysis" class="section level2">
 <h2>Temperature analysis</h2>
@@ -187,7 +198,7 @@ winter_only_data %&gt;%
         axis.title = element_text(size=14), 
         plot.subtitle = element_text(size=10),
         plot.title = element_text(size=16))</code></pre>
-<p><img src="/posts/Ottawa-Winters-2019/index_files/figure-html/Temperature1-1.png" width="672" /></p>
+<p><img src="/posts/2019-04-14-Ottawa-Winters-2019_files/figure-html/Temperature1-1.png" width="672" /></p>
 <p>Now to look at the mean daily temperatures across the past 4 winters. I decided to highlight days where the mean temperature was over 0 in red, and below -20 in blue.</p>
 <pre class="r"><code>temp_animate&lt;-winter_only_data %&gt;%
   mutate(colour=case_when(`Mean Temp (°C)`&gt;= 0 ~ &quot;above 0&quot;,
@@ -210,7 +221,7 @@ winter_only_data %&gt;%
   shadow_mark(past=TRUE)
 
 animate(temp_animate, renderer = gifski_renderer(loop = F))</code></pre>
-<p><img src="/posts/Ottawa-Winters-2019/index_files/figure-html/Temperature2-1.gif" /><!-- --></p>
+<p><img src="/posts/2019-04-14-Ottawa-Winters-2019_files/figure-html/Temperature2-1.gif" /><!-- --></p>
 </div>
 <div id="canal-analysis" class="section level2">
 <h2>Canal analysis</h2>

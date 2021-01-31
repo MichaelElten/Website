@@ -2,22 +2,21 @@
 title: "Ottawa Winters -2019"
 author: "Michael Elten"
 date: '2019-03-27'
-output: pdf_document
+slug: ottawa-winters
 categories: [Analysis]
 Tags:
 - Data Visualization
 - Ridgeplot
 - GGanimate
-slug: ottawa-winters
 Description: 'Analysis of temperatures, snow and Canal season lengths of Ottawa winters past.'
 layout: posts
 ---
 
 ## The setting
 
-It was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.
+It was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicions, I wanted to take a look back at previous years to see how this past winter ranked.
 
-Luckily for me, there is an excellent publically available data source for historical Canadian weather data, provided by [Environment Canada](http://climate.weather.gc.ca/historical_data/search_historic_data_e.html).
+Luckily for me, there is an excellent publicly available data source for historical Canadian weather data, provided by [Environment Canada](http://climate.weather.gc.ca/historical_data/search_historic_data_e.html).
 
 ## Load packages and import data
 

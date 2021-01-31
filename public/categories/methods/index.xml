@@ -6,20 +6,7 @@
     <description>Recent content in Methods on Casual Inferences</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 May 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/categories/methods/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Getting-Fitbit-data-in-R</title>
-      <link>/posts/getting-fitbit-data-in-r/</link>
-      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/getting-fitbit-data-in-r/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="/categories/methods/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Data entry form within Google Sheets</title>
       <link>/posts/data-entry-form-within-google-sheets/</link>

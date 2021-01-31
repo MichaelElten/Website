@@ -3,33 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/</loc>
+    <lastmod>2020-05-18T12:28:16-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/categories/</loc>
-    <lastmod>2020-05-30T19:44:46-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/getting-fitbit-data-in-r/</loc>
-    <lastmod>2020-05-30T19:44:46-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/methods/</loc>
-    <lastmod>2020-05-30T19:44:46-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/posts/</loc>
-    <lastmod>2020-05-30T19:44:46-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/r/</loc>
-    <lastmod>2020-05-30T19:44:46-04:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-05-30T19:44:46-04:00</lastmod>
+    <lastmod>2020-05-18T12:28:16-04:00</lastmod>
   </url>
   
   <url>
@@ -43,13 +23,23 @@
   </url>
   
   <url>
-    <loc>/posts/subcategories-in-google-sheets/</loc>
-    <lastmod>2020-05-15T20:01:25-04:00</lastmod>
+    <loc>/categories/methods/</loc>
+    <lastmod>2020-05-18T12:28:16-04:00</lastmod>
   </url>
   
   <url>
-    <loc>/posts/visualizing-covid-19/</loc>
-    <lastmod>2020-04-21T20:36:40-04:00</lastmod>
+    <loc>/posts/</loc>
+    <lastmod>2020-05-18T12:28:16-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-05-18T12:28:16-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/subcategories-in-google-sheets/</loc>
+    <lastmod>2020-05-15T20:01:25-04:00</lastmod>
   </url>
   
   <url>
@@ -60,6 +50,16 @@
   <url>
     <loc>/posts/how-to-plot-google-trends-in-r/</loc>
     <lastmod>2020-04-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/portfolio/p1/</loc>
+    <lastmod>2020-04-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/portfolio/</loc>
+    <lastmod>2020-04-14T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -110,15 +110,6 @@
   <url>
     <loc>/about/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/portfolio/</loc>
   </url>
   
 </urlset>

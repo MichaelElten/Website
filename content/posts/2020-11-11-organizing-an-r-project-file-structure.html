@@ -1,0 +1,73 @@
+---
+title: Organizing an R project file structure
+author: ''
+date: '2020-11-11'
+slug: organizing-an-r-project-file-structure
+categories:
+  - Methods
+tags:
+  - R
+lastmod: '2020-11-11T15:44:50-05:00'
+layout: posts
+type: posts
+highlight: no
+draft: true
+
+Description: 'How to set up the folder structure for an R project'
+---
+
+
+
+<p>My typical file structure:</p>
+<pre><code>project/
+│   
+└───README.md
+└───Resources/
+└───Output/
+│
+└───Data/
+│   │
+│   │───raw_data/
+│   │───temp_data/
+│   
+└───Scripts/
+    │
+    │───01_import_data.R
+    │───02_process_data.R
+    │───03_plot_data.R
+    │───Functions.R</code></pre>
+<div id="what-is-the-purpose-of-having-a-good-r-project-file-structure" class="section level1">
+<h1>What is the purpose of having a good R project file structure</h1>
+<p>Have a good and consistent</p>
+<p>Why use R project over single script files?</p>
+<p>Can easily move between projects
+Can look back and know where to find output, etc.</p>
+</div>
+<div id="folder-overview" class="section level1">
+<h1>Folder overview</h1>
+<div id="readme-file" class="section level4">
+<h4>ReadME file</h4>
+</div>
+<div id="data-folder" class="section level4">
+<h4>Data folder</h4>
+<p>Discuss raw_data vs intermediate data</p>
+</div>
+<div id="scripts-folder" class="section level4">
+<h4>Scripts folder</h4>
+<p>Show how a “sources” .R file can be used to store common functions, and ggplot themes (plug ggplot theme post)</p>
+</div>
+<div id="output-folder" class="section level4">
+<h4>Output folder</h4>
+<p>Talk about how output can be dated in the file names
+Report output</p>
+</div>
+<div id="resources-folder" class="section level4">
+<h4>Resources folder</h4>
+<p>Talk about how other resources can be held here (data dictionaries, administrative stuff for the project)</p>
+</div>
+</div>
+<div id="closing-remarks" class="section level1">
+<h1>Closing remarks</h1>
+<p>Finding and using a consistent file structure that works for you is important
+Don’t get bogged down on designing the ideal structure, just find a functional format that works for the type of analysis you are doing, and adapt it as you gain more experience</p>
+</div>

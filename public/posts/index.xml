@@ -6,20 +6,7 @@
     <description>Recent content in Posts on Casual Inferences</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 30 May 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Getting-Fitbit-data-in-R</title>
-      <link>/posts/getting-fitbit-data-in-r/</link>
-      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/getting-fitbit-data-in-r/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Mon, 25 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Data entry form within Google Sheets</title>
       <link>/posts/data-entry-form-within-google-sheets/</link>
@@ -38,15 +25,6 @@ Here I present a quick and easy way to design a data entry form within a Google 
       <guid>/posts/subcategories-in-google-sheets/</guid>
       <description>A problem I came across recently was how to make one drop down list based on the contents of another drop down list in order to specify categories and subcategories.
 I found two ways of doing this - Method 1 is a simpler technique for when you only need one or two of these in a sheet, and Method 2 is for when you need many of these category-subcategory drop down lists as in a larger table or for data entry.</description>
-    </item>
-    
-    <item>
-      <title>Visualizing Covid-19</title>
-      <link>/posts/visualizing-covid-19/</link>
-      <pubDate>Tue, 21 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/visualizing-covid-19/</guid>
-      <description>Getting data sources</description>
     </item>
     
     <item>
@@ -85,8 +63,8 @@ Unicode is a standardized coding scheme for characters of all languages. As of M
       <pubDate>Wed, 27 Mar 2019 00:00:00 +0000</pubDate>
       
       <guid>/posts/ottawa-winters/</guid>
-      <description>The settingIt was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicians, I wanted to take a look back at previous years to see how this past winter ranked.
-Luckily for me, there is an excellent publically available data source for historical Canadian weather data, provided by Environment Canada.</description>
+      <description>The settingIt was a cold and snowy beginning to Spring here in Ottawa. We had just had one of the most intense and drawn out winters, or at least that is what it felt like to me. To confirm my suspicions, I wanted to take a look back at previous years to see how this past winter ranked.
+Luckily for me, there is an excellent publicly available data source for historical Canadian weather data, provided by Environment Canada.</description>
     </item>
     
   </channel>

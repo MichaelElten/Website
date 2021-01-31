@@ -10,7 +10,6 @@ tags:
 lastmod: '2020-05-18T12:28:16-04:00'
 layout: posts
 
-highlight: no
 Description: 'A post to show how to make a data entry form within a Google Sheets workbook that can also work from the mobile App'
 ---
 
